@@ -22,9 +22,33 @@ public class SuscripcionBasica implements Suscripcion {
     }
 
     @Override
-    public Factura getFactura(Servicio servicio) {
+    public Factura generarFacturaCobro(Servicio servicio) {
+        double subtotal = servicio.getPrecio();
+        double total = calcularTotal(servicio);
+
+        ServicioSuscripcion servicioSuscripcion = null;
+
+        for (ServicioSuscripcion ss : serviciosDisponibles) {
+            if (ss.getServicio().equals(servicio)) {
+                servicioSuscripcion = ss;
+                break;
+            }
+        }
+
+        TipoDescuento tipo = (servicioSuscripcion != null) ? servicioSuscripcion.getTipoDescuento() : null;
+
+        // Creamos la factura
+        Factura factura = Factura.builder()
+                .fecha(LocalDate.now())
+                .nombrePaciente("Paciente no especificado") // Reemplaza si tienes acceso al paciente
+                .nombreServicio(servicio.getNombre())
+                .subtotal(subtotal)
+                .total(total)
+                .tipoDescuento(tipo)
+                .build();
 
         return factura;
+
     }
 
     @Override
