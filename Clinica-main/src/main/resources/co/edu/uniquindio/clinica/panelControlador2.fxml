@@ -33,6 +33,6 @@
             <Tab fx:id="tab4" closable="false" style="-fx-background-color: #d5dbdb;" text="Listar citas" />
         </tabs>
     </TabPane>
-
+/
 
 </VBox>
