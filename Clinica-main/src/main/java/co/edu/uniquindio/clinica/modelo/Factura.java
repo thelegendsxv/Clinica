@@ -1,6 +1,6 @@
 package co.edu.uniquindio.clinica.modelo;
 
-import co.edu.uniquindio.clinica.modelo.enumer.TipoDescueto;
+import co.edu.uniquindio.clinica.modelo.enumer.TipoDescuento;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -19,5 +19,5 @@ public class Factura {
     private String id;
     private double total;
     private double subtotal;
-    private TipoDescueto tipo;
+    private TipoDescuento tipo;
 }

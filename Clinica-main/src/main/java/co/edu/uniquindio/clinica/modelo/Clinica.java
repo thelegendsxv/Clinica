@@ -1,7 +1,7 @@
 package co.edu.uniquindio.clinica.modelo;
 
 import co.edu.uniquindio.clinica.modelo.enumer.EstadoCita;
-import co.edu.uniquindio.clinica.modelo.enumer.TipoDescueto;
+import co.edu.uniquindio.clinica.modelo.enumer.TipoDescuento;
 import co.edu.uniquindio.clinica.modelo.factory.Suscripcion;
 
 import java.time.LocalDateTime;
@@ -115,7 +115,7 @@ public class Clinica {
             throw new IllegalArgumentException("La fecha de la cita debe ser en el futuro.");
         }
     }
-    public Factura generarFactura(Paciente paciente, Servicio servicio , TipoDescueto tipo) throws Exception {
+    public Factura generarFactura(Paciente paciente, Servicio servicio) throws Exception {
         double subtotal = servicio.getPrecio();
         double total = paciente.getSuscripcion().calcularTotal(servicio);
 

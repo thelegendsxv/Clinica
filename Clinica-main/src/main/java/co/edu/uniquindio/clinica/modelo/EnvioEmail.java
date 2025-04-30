@@ -6,7 +6,8 @@ import org.simplejavamail.api.mailer.config.TransportStrategy;
 import org.simplejavamail.email.EmailBuilder;
 import org.simplejavamail.mailer.MailerBuilder;
 
-public class EnvioEmail {
+public class
+EnvioEmail {
 
 
     public static void enviarNotificacion(String destinatario, String asunto, String mensaje) {
