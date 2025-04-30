@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox spacing="20.0" style="-fx-padding: 30px" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="co.edu.uniquindio.clinica.controladores.PanelControlador">
+<HBox spacing="20.0" style="-fx-padding: 30px; -fx-background-color: #fae5d3;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.clinica.controladores.PanelControlador">
 
 
     <VBox alignment="BASELINE_CENTER" minWidth="200.0" spacing="20.0">
@@ -28,10 +28,10 @@
         </HBox>
 
 
-        <Button minWidth="200.0" onAction="#mostrarRegistroPaciente" text="Registrar paciente" />
-        <Button minWidth="200.0" onAction="#mostrarListaPacientes" text="Listar pacientes" />
-        <Button minWidth="200.0" onAction="#mostrarRegistroCita" text="Crear cita" />
-        <Button minWidth="200.0" onAction="#mostrarListaCitas" text="Listar citas" />
+        <Button minWidth="200.0" onAction="#mostrarRegistroPaciente" style="-fx-background-color: #d5dbdb;" text="Registrar paciente" />
+        <Button minWidth="200.0" onAction="#mostrarListaPacientes" style="-fx-background-color: #d5dbdb;" text="Listar pacientes" />
+        <Button minWidth="200.0" onAction="#mostrarRegistroCita" style="-fx-background-color: #d5dbdb;" text="Crear cita" />
+        <Button minWidth="200.0" onAction="#mostrarListaCitas" style="-fx-background-color: #d5dbdb;" text="Listar citas" />
     </VBox>
 
 
