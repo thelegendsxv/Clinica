@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox spacing="20.0" style="-fx-padding: 30px" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="co.edu.uniquindio.clinica.controladores.PanelControlador">
+
+
+    <VBox alignment="BASELINE_CENTER" minWidth="200.0" spacing="20.0">
+
+
+        <HBox alignment="CENTER" spacing="10.0">
+            <ImageView fitWidth="50.0" preserveRatio="true">
+            <image>
+               <Image url="@../../../../Img/medicamento.png" />
+            </image></ImageView>
+            <Label text="Panel de la clínica">
+                <font>
+                    <Font size="20.0" />
+                </font>
+            </Label>
+        </HBox>
+
+
+        <Button minWidth="200.0" onAction="#mostrarRegistroPaciente" text="Registrar paciente" />
+        <Button minWidth="200.0" onAction="#mostrarListaPacientes" text="Listar pacientes" />
+        <Button minWidth="200.0" onAction="#mostrarRegistroCita" text="Crear cita" />
+        <Button minWidth="200.0" onAction="#mostrarListaCitas" text="Listar citas" />
+    </VBox>
+
+
+    <StackPane fx:id="panelPrincipal" HBox.hgrow="ALWAYS" />
+
+
+</HBox>
