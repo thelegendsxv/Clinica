@@ -8,6 +8,10 @@
 <?import javafx.scene.text.Font?>
 
 
+<?import javax.swing.text.html.ImageView?>
+<?import sun.tools.jconsole.Tab?>
+<?import java.awt.Label?>
+<?import java.awt.Font?>
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
       spacing="30.0"

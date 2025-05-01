@@ -2,10 +2,11 @@ package co.edu.uniquindio.clinica.controlador;
 
 
 import co.edu.uniquindio.clinica.servicios.ClinicaServicio;
-import javafx.scene.Node;
-import javafx.scene.control.Alert;
-import javafx.stage.Stage;
+
+
+
 import lombok.Getter;
+import org.w3c.dom.Node;
 
 
 public class ControladorPrincipal {

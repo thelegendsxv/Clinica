@@ -1,14 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="co.edu.uniquindio.clinica.controladores.CrearCitaControlador"
-            prefHeight="400.0" prefWidth="600.0">
+<VBox style="-fx-background-color: #fae5d3;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.clinica.controladores.CrearCitaControlador">
+    <children>
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Crear Cita" translateX="200.0" translateY="5.0">
+            <font>
+                <Font size="16.0" />
+            </font>
+        </Text>
+        <GridPane prefHeight="400.0" prefWidth="600.0">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Paciente" translateX="100.0" translateY="10.0" />
+                <ComboBox fx:id="cbPaciente" promptText="Seleccione un paciente" translateX="-50.0" translateY="10.0" GridPane.columnIndex="1" />
 
-</AnchorPane>
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Servicio" translateX="100.0" GridPane.rowIndex="1" />
+                <ComboBox fx:id="cbServicio" promptText="Seleccione un servicio" translateX="-50.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha" translateX="100.0" GridPane.rowIndex="2" />
+                <DatePicker fx:id="dpFecha" translateX="-50.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Hora" translateX="100.0" GridPane.rowIndex="3" />
+                <ComboBox fx:id="cbHora" promptText="Seleccione una hora" translateX="-50.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Precio" translateX="100.0" GridPane.rowIndex="4" />
+                <Label fx:id="lblPrecio" style="-fx-background-color: #d5dbdb; -fx-padding: 5;" translateX="-50.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Notas" translateX="100.0" translateY="-20.0" GridPane.rowIndex="5" />
+                <TextField fx:id="txtNotas" promptText="Ingrese notas adicionales" translateX="-50.0" translateY="-20.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            </children>
+        </GridPane>
+        <Button mnemonicParsing="false" onAction="#crearCita" style="-fx-background-color: #d5dbdb;" text="Crear Cita" translateX="280.0" translateY="-12.0" />
+    </children>
+</VBox>

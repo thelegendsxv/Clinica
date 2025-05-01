@@ -7,12 +7,15 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<VBox xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.clinica.controladores.CrearPacienteControlador">
+<VBox style="-fx-background-color: #fae5d3;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.clinica.controladores.CrearPacienteControlador">
    <children>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Crear Paciente" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Crear Paciente" translateX="200.0" translateY="5.0">
+         <font>
+            <Font size="16.0" />
+         </font></Text>
       <GridPane prefHeight="334.0" prefWidth="496.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -26,19 +29,19 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre" />
-            <TextField fx:id="nombreTextField" promptText="Ingrese el nombre" GridPane.columnIndex="1" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre" translateX="100.0" translateY="10.0" />
+            <TextField fx:id="nombreTextField" promptText="Ingrese el nombre" translateX="-50.0" translateY="10.0" GridPane.columnIndex="1" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" GridPane.rowIndex="1" />
-            <TextField fx:id="idTextField" promptText="ingrese el id" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Telefono" GridPane.rowIndex="2" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ID" GridPane.rowIndex="1" />
-            <TextField fx:id="telefonoTextField" promptText="Ingrese el telefono" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Correo" GridPane.rowIndex="3" />
-            <TextField fx:id="correoTextField" promptText="Ingrese su Correo" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tipo de Suscripción" GridPane.rowIndex="4" />
-            <ComboBox fx:id="boxTipoSuscripcion" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextField fx:id="idTextField" promptText="ingrese el id" translateX="-50.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Telefono" translateX="100.0" translateY="-10.0" GridPane.rowIndex="2" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ID" translateX="100.0" GridPane.rowIndex="1" />
+            <TextField fx:id="telefonoTextField" promptText="Ingrese el telefono" translateX="-50.0" translateY="-10.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Correo" translateX="100.0" translateY="-20.0" GridPane.rowIndex="3" />
+            <TextField fx:id="correoTextField" promptText="Ingrese su Correo" translateX="-50.0" translateY="-20.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tipo de Suscripción" translateX="100.0" translateY="-30.0" GridPane.rowIndex="4" />
+            <ComboBox fx:id="boxTipoSuscripcion" prefWidth="150.0" translateX="50.0" translateY="-30.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
          </children>
       </GridPane>
-      <Button mnemonicParsing="false" onAction="#crearPaciente" text="Crear Paciente" />
+      <Button mnemonicParsing="false" onAction="#crearPaciente" style="-fx-background-color: #d5dbdb;" text="Crear Paciente" translateX="205.0" translateY="-20.0" />
    </children>
 </VBox>

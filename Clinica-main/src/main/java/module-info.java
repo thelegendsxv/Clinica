@@ -4,6 +4,7 @@ module co.edu.uniquindio.clinica {
     requires static lombok;
     requires org.simplejavamail;
     requires org.simplejavamail.core;
+    requires java.xml;
 
 
     exports co.edu.uniquindio.clinica.controladores;
