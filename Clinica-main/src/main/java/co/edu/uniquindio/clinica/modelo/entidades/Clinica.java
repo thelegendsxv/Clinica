@@ -17,20 +17,10 @@ public class Clinica {
     private List<Cita> citas;
     private List<Servicio> servicios;
 
-    private Clinica (){
+    public Clinica (){
         this.pacientes = new LinkedList<>();
         this.citas = new LinkedList<>();
         this.servicios = new LinkedList<>();
-    }
-
-    //Singleton
-    private static Clinica instance;
-
-    public static synchronized Clinica getInstance(){
-        if(instance == null){
-            instance = new Clinica();
-        }
-        return instance;
     }
 
     public void agregarPaciente(String id, String nombre, String telefono, String correo, Suscripcion suscripcion) throws Exception {
