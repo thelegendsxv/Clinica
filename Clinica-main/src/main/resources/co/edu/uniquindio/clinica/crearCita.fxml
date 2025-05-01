@@ -13,7 +13,7 @@
 
 <VBox style="-fx-background-color: #fae5d3;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.clinica.controladores.CrearCitaControlador">
     <children>
-        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Crear Cita" translateX="270.0" translateY="5.0">
+        <Text id="TextCrearCita" fx:id="TextCrearCita" strokeType="OUTSIDE" strokeWidth="0.0" text="Crear Cita" translateX="270.0" translateY="5.0">
             <font>
                 <Font size="16.0" />
             </font>
@@ -32,22 +32,22 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
-                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Paciente" translateX="100.0" translateY="10.0" />
-                <ComboBox fx:id="cbPaciente" promptText="Seleccione un paciente" translateX="-50.0" translateY="10.0" GridPane.columnIndex="1" />
+                <Text id="TextPaciente" fx:id="TextPaciente" strokeType="OUTSIDE" strokeWidth="0.0" text="Paciente" translateX="100.0" translateY="10.0" />
+                <ComboBox id="SeleccioneUnPaciente" fx:id="SeleccionePaciente" promptText="Seleccione un paciente" translateX="-50.0" translateY="10.0" GridPane.columnIndex="1" />
 
-                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Servicio" translateX="100.0" GridPane.rowIndex="1" />
-                <ComboBox fx:id="cbServicio" promptText="Seleccione un servicio" translateX="-50.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <Text id="TextServicio" fx:id="TextServicio" strokeType="OUTSIDE" strokeWidth="0.0" text="Servicio" translateX="100.0" GridPane.rowIndex="1" />
+                <ComboBox id="SelecicioneUnServicio" fx:id="SeleccioneServicio" promptText="Seleccione un servicio" translateX="-50.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
 
-                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha" translateX="100.0" GridPane.rowIndex="2" />
-                <DatePicker fx:id="dpFecha" translateX="-50.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                <Text id="TextFecha" fx:id="TextFecha" strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha" translateX="100.0" GridPane.rowIndex="2" />
+                <DatePicker id="RegistrarFecha" fx:id="SeleccioneFecha" translateX="-50.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
 
-                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Hora" translateX="100.0" GridPane.rowIndex="3" />
-                <ComboBox fx:id="cbHora" promptText="Seleccione una hora" translateX="-50.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                <Text id="TextHora" fx:id="TextHora" strokeType="OUTSIDE" strokeWidth="0.0" text="Hora" translateX="100.0" GridPane.rowIndex="3" />
+                <ComboBox id="SeleccioneUnaHora" fx:id="SeleccioneHora" promptText="Seleccione una hora" translateX="-50.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
 
-                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nota" translateX="100.0" translateY="-70.0" GridPane.rowIndex="5" />
-                <TextField fx:id="txtNotas" promptText="Ingrese notas adicionales" translateX="-50.0" translateY="-70.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                <Text id="TextNota" fx:id="TextNota" strokeType="OUTSIDE" strokeWidth="0.0" text="Nota" translateX="100.0" translateY="-70.0" GridPane.rowIndex="5" />
+                <TextField id="IngresarNota" fx:id="IngreseNotas" promptText="Ingrese notas adicionales" translateX="-50.0" translateY="-70.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             </children>
         </GridPane>
-        <Button mnemonicParsing="false" onAction="#crearCita" style="-fx-background-color: #d5dbdb;" text="Crear Cita" translateX="270.0" translateY="-40.0" />
+        <Button id="BotonCrearCita" fx:id="BotonCrearCita" mnemonicParsing="false" onAction="#crearCita" style="-fx-background-color: #d5dbdb;" text="Crear Cita" translateX="270.0" translateY="-40.0" />
     </children>
 </VBox>
