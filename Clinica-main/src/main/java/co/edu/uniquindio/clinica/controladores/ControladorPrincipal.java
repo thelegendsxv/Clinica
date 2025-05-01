@@ -7,7 +7,7 @@ import co.edu.uniquindio.clinica.servicios.ClinicaServicio;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import lombok.Getter;
-import org.w3c.dom.Node;
+import javafx.scene.Node;
 
 
 public class ControladorPrincipal {
