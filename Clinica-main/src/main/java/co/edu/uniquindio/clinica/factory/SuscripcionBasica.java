@@ -1,11 +1,10 @@
-package co.edu.uniquindio.clinica.modelo.factory;
+package co.edu.uniquindio.clinica.factory;
 
-import co.edu.uniquindio.clinica.modelo.Factura;
-import co.edu.uniquindio.clinica.modelo.Servicio;
-import co.edu.uniquindio.clinica.modelo.ServicioSuscripcion;
+import co.edu.uniquindio.clinica.modelo.entidades.Factura;
+import co.edu.uniquindio.clinica.modelo.entidades.Servicio;
+import co.edu.uniquindio.clinica.modelo.entidades.ServicioSuscripcion;
 import co.edu.uniquindio.clinica.modelo.enumer.TipoDescuento;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.ArrayList;  // Importar ArrayList para inicializar la lista
 

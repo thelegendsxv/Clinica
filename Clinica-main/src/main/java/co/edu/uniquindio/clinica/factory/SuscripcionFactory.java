@@ -1,6 +1,4 @@
-package co.edu.uniquindio.clinica.modelo.factory;
-
-import co.edu.uniquindio.clinica.modelo.Servicio;
+package co.edu.uniquindio.clinica.factory;
 
 //Abstarct Factory Method
 public abstract class SuscripcionFactory{

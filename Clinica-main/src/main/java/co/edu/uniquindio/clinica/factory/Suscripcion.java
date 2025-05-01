@@ -1,6 +1,8 @@
-package co.edu.uniquindio.clinica.modelo.factory;
+package co.edu.uniquindio.clinica.factory;
 
-import co.edu.uniquindio.clinica.modelo.*;
+import co.edu.uniquindio.clinica.modelo.entidades.Factura;
+import co.edu.uniquindio.clinica.modelo.entidades.Servicio;
+import co.edu.uniquindio.clinica.modelo.entidades.ServicioSuscripcion;
 
 import java.util.List;
 

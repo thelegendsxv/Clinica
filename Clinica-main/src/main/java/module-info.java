@@ -10,4 +10,6 @@ module co.edu.uniquindio.clinica {
     exports co.edu.uniquindio.clinica;
     exports co.edu.uniquindio.clinica.controladores;
     opens co.edu.uniquindio.clinica.controladores to javafx.fxml;
+    exports co.edu.uniquindio.clinica.app;
+    opens co.edu.uniquindio.clinica.app to javafx.fxml;
 }

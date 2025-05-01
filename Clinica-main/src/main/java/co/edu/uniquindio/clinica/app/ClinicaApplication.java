@@ -1,4 +1,4 @@
-package co.edu.uniquindio.clinica;
+package co.edu.uniquindio.clinica.app;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

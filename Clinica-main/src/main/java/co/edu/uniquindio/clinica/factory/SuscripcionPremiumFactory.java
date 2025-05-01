@@ -1,4 +1,4 @@
-package co.edu.uniquindio.clinica.modelo.factory;
+package co.edu.uniquindio.clinica.factory;
 
 public class SuscripcionPremiumFactory extends SuscripcionFactory {
 

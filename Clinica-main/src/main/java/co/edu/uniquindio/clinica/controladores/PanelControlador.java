@@ -1,54 +1,52 @@
 package co.edu.uniquindio.clinica.controladores;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.layout.StackPane;
+import javafx.scene.control.Tab;
 
-public class PanelControlador {
+
+import java.net.URL;
+import java.util.ResourceBundle;
+
+
+public class PanelControlador implements Initializable {
+
+
     @FXML
-    private StackPane panelPrincipal;
+    private Tab tab1;
 
 
-    public void mostrarRegistroPaciente(ActionEvent actionEvent) {
-        Parent node = cargarPanel("/registroPaciente.fxml");
+    @FXML
+    private Tab tab2;
 
 
-        // Se reemplaza el contenido del panel principal
-        panelPrincipal.getChildren().setAll(node);
-    }
+    @FXML
+    private Tab tab3;
 
 
-    public void mostrarListaPacientes(ActionEvent actionEvent) {
-        Parent node = cargarPanel("/listaPacientes.fxml");
+    @FXML
+    private Tab tab4;
 
 
-        // Se reemplaza el contenido del panel principal
-        panelPrincipal.getChildren().setAll(node);
-    }
-
-
-    public void mostrarRegistroCita(ActionEvent actionEvent) {
-        //Completar
-    }
-
-
-    public void mostrarListaCitas(ActionEvent actionEvent) {
-        //Completar
-    }
-
-
-    private Parent cargarPanel(String fxmlFile) {
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
-            Parent node = loader.load();
-            return node;
+            cargarTab(tab1, "/registroPaciente.fxml");
+            cargarTab(tab2, "/listaPacientes.fxml");
+            //Agregar los otros tabs…
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return null;
     }
 
-
+    private void cargarTab(Tab tab, String fxmlFile) throws Exception {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
+        Parent content = loader.load();
+        tab.setContent(content);
+    }
 }
+
+
+

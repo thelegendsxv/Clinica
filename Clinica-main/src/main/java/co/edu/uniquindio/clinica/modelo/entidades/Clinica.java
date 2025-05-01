@@ -1,23 +1,36 @@
-package co.edu.uniquindio.clinica.modelo;
+package co.edu.uniquindio.clinica.modelo.entidades;
 
 import co.edu.uniquindio.clinica.modelo.enumer.EstadoCita;
-import co.edu.uniquindio.clinica.modelo.enumer.TipoDescuento;
-import co.edu.uniquindio.clinica.modelo.factory.Suscripcion;
+import co.edu.uniquindio.clinica.factory.Suscripcion;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.UUID;
 
+@Getter
+@Setter
 public class Clinica {
     private List<Paciente> pacientes;
     private List<Cita> citas;
     private List<Servicio> servicios;
 
-    public Clinica (){
+    private Clinica (){
         this.pacientes = new LinkedList<>();
         this.citas = new LinkedList<>();
         this.servicios = new LinkedList<>();
+    }
+
+    //Singleton
+    private static Clinica instance;
+
+    public static synchronized Clinica getInstance(){
+        if(instance == null){
+            instance = new Clinica();
+        }
+        return instance;
     }
 
     public void agregarPaciente(String id, String nombre, String telefono, String correo, Suscripcion suscripcion) throws Exception {
@@ -101,6 +114,7 @@ public class Clinica {
 
         citas.add(cita);
         enviarCorreoVerificacion(paciente,cita);
+        EnvioEmail.enviarNotificacion("Email destinatario", "Asunto", "Cuerpo");
     }
 
     public void validarDatosCita(Paciente paciente, Servicio servicio, LocalDateTime fecha) throws Exception {
@@ -126,6 +140,7 @@ public class Clinica {
         if (cita != null) {
             cita.setEstado(EstadoCita.CANCELADA);
             System.out.println("Cita cancelada exitosamente.");
+            EnvioEmail.enviarNotificacion("Email destinatario", "Asunto", "Cuerpo");
         } else {
             throw new Exception("Cita no encontrada.");
         }

@@ -1,6 +1,6 @@
-package co.edu.uniquindio.clinica.modelo;
+package co.edu.uniquindio.clinica.modelo.entidades;
 
-import co.edu.uniquindio.clinica.modelo.factory.Suscripcion;
+import co.edu.uniquindio.clinica.factory.Suscripcion;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;

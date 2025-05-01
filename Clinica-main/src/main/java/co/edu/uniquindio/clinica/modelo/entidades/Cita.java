@@ -1,4 +1,4 @@
-package co.edu.uniquindio.clinica.modelo;
+package co.edu.uniquindio.clinica.modelo.entidades;
 
 import co.edu.uniquindio.clinica.modelo.enumer.EstadoCita;
 import lombok.Builder;
