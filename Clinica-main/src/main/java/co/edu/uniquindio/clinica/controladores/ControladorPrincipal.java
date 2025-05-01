@@ -1,10 +1,11 @@
-package co.edu.uniquindio.clinica.controlador;
+package co.edu.uniquindio.clinica.controladores;
 
 
 import co.edu.uniquindio.clinica.servicios.ClinicaServicio;
 
 
-
+import javafx.scene.control.Alert;
+import javafx.stage.Stage;
 import lombok.Getter;
 import org.w3c.dom.Node;
 
