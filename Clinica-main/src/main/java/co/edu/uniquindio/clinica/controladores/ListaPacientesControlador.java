@@ -2,6 +2,9 @@ package co.edu.uniquindio.clinica.controladores;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import co.edu.uniquindio.clinica.factory.Suscripcion;
+import co.edu.uniquindio.clinica.modelo.entidades.Paciente;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -15,22 +18,22 @@ public class ListaPacientesControlador {
     private URL location;
 
     @FXML
-    private TableColumn<?, ?> correoCol;
+    private TableColumn<Paciente, String> correoCol;
 
     @FXML
-    private TableColumn<?, ?> idCol;
+    private TableColumn<Paciente, String> idCol;
 
     @FXML
-    private TableColumn<?, ?> nombreCol;
+    private TableColumn<Paciente, String> nombreCol;
 
     @FXML
-    private TableColumn<?, ?> suscripcionCol;
+    private TableColumn<Paciente, Suscripcion> suscripcionCol;
 
     @FXML
-    private TableView<?> tablaPacientes;
+    private TableView<Paciente> tablaPacientes;
 
     @FXML
-    private TableColumn<?, ?> telefonoCol;
+    private TableColumn<Paciente, String> telefonoCol;
 
     @FXML
     void initialize() {
