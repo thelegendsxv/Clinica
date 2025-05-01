@@ -19,17 +19,25 @@ public class SuscripcionPremium implements Suscripcion {
     }
 
     @Override
-    public Factura getFactura(Servicio servicio) {
+    public Factura generarFacturaCobro(Servicio servicio, String nombre) {
+        double subtotal = servicio.getPrecio();
+        double total = calcularTotal(servicio);
 
+        ServicioSuscripcion servicioSuscripcion = null;
 
+        servicioSuscripcion = buscarServicioSuscripcion(servicio);
+        TipoDescuento tipo = (servicioSuscripcion != null) ? servicioSuscripcion.getTipoDescuento() : null;
+
+        Factura factura = Factura.builder()
+                .pacienteNombre(nombre)
+                .servicio(servicio.getNombre())
+                .subtotal(subtotal)
+                .total(total)
+                .build();
         return factura;
     }
 
-    @Override
     public double calcularTotal(Servicio servicio ) {
-
-
-
 
         double precioFinal = servicio.getPrecio();
 
@@ -63,5 +71,16 @@ public class SuscripcionPremium implements Suscripcion {
     public void agregarServicio(Servicio servicio, TipoDescuento tipo) throws Exception {
         serviciosDisponibles.add(new ServicioSuscripcion(servicio, tipo));
     }
+
+    //Generalizado
+    private ServicioSuscripcion buscarServicioSuscripcion(Servicio servicio) {
+        for (ServicioSuscripcion ss : serviciosDisponibles) {
+            if (ss.getServicio().equals(servicio)) {
+                return ss;
+            }
+        }
+        return null;
+    }
+
 
 }

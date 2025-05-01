@@ -116,16 +116,9 @@ public class Clinica {
         }
     }
     public Factura generarFactura(Paciente paciente, Servicio servicio) throws Exception {
-        double subtotal = servicio.getPrecio();
-        double total = paciente.getSuscripcion().calcularTotal(servicio);
-
-        Factura factura = Factura.builder()
-                .pacienteNombre(paciente.getNombre())
-                .servicio(servicio.getNombre())
-                .subtotal(subtotal)
-                .total(total)
-                .build();
+        Factura factura = paciente.getSuscripcion().generarFacturaCobro(servicio, paciente.getNombre());
         return factura;
+
     }
 
     public void cancelarCita(String idCita) throws Exception {

@@ -7,6 +7,6 @@ import java.util.List;
 public interface Suscripcion {
 
     public List<ServicioSuscripcion> getServiciosDisponibles();
-    public Factura generarFacturaCobro(Servicio servicio);
+    public Factura generarFacturaCobro(Servicio servicio, String nombre);
     public double calcularTotal(Servicio servicio);
 }

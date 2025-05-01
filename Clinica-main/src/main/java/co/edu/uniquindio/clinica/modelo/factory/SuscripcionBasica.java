@@ -5,6 +5,7 @@ import co.edu.uniquindio.clinica.modelo.Servicio;
 import co.edu.uniquindio.clinica.modelo.ServicioSuscripcion;
 import co.edu.uniquindio.clinica.modelo.enumer.TipoDescuento;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.ArrayList;  // Importar ArrayList para inicializar la lista
 
@@ -22,48 +23,32 @@ public class SuscripcionBasica implements Suscripcion {
     }
 
     @Override
-    public Factura generarFacturaCobro(Servicio servicio) {
+    public Factura generarFacturaCobro(Servicio servicio, String nombre) {
         double subtotal = servicio.getPrecio();
         double total = calcularTotal(servicio);
 
         ServicioSuscripcion servicioSuscripcion = null;
 
-        for (ServicioSuscripcion ss : serviciosDisponibles) {
-            if (ss.getServicio().equals(servicio)) {
-                servicioSuscripcion = ss;
-                break;
-            }
-        }
-
+        servicioSuscripcion = buscarServicioSuscripcion(servicio);
         TipoDescuento tipo = (servicioSuscripcion != null) ? servicioSuscripcion.getTipoDescuento() : null;
 
-        // Creamos la factura
         Factura factura = Factura.builder()
-                .fecha(LocalDate.now())
-                .nombrePaciente("Paciente no especificado") // Reemplaza si tienes acceso al paciente
-                .nombreServicio(servicio.getNombre())
+                .pacienteNombre(nombre)
+                .servicio(servicio.getNombre())
                 .subtotal(subtotal)
                 .total(total)
-                .tipoDescuento(tipo)
                 .build();
-
         return factura;
-
     }
 
     @Override
-    public double calcularTotal(Servicio servicio ) {
-
+    public double calcularTotal(Servicio servicio) {
 
         double precioFinal = servicio.getPrecio();
 
         ServicioSuscripcion servicioSuscripcionBuscado = null;
 
-        for (ServicioSuscripcion servicioSuscripcion : serviciosDisponibles) {
-            if(servicioSuscripcion.getServicio().equals(servicio)) {
-                servicioSuscripcionBuscado = servicioSuscripcion;
-            }
-        }
+        servicioSuscripcionBuscado = buscarServicioSuscripcion(servicio);
 
         if(servicioSuscripcionBuscado == null) {
             precioFinal = servicio.getPrecio();
@@ -81,11 +66,22 @@ public class SuscripcionBasica implements Suscripcion {
         }
 
         return precioFinal;
-
     }
+
+
 
     public void agregarServicio(Servicio servicio, TipoDescuento tipo) throws Exception {
         serviciosDisponibles.add(new ServicioSuscripcion(servicio, tipo));
+    }
+
+    //Generalizado
+    private ServicioSuscripcion buscarServicioSuscripcion(Servicio servicio) {
+        for (ServicioSuscripcion ss : serviciosDisponibles) {
+            if (ss.getServicio().equals(servicio)) {
+                return ss;
+            }
+        }
+        return null;
     }
 
 }
