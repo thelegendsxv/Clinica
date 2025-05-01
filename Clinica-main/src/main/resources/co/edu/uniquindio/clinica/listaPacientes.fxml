@@ -18,11 +18,11 @@
 
     <TableView fx:id="tablaPacientes" style="-fx-background-color: #fae5d3;" VBox.vgrow="ALWAYS">
         <columns>
-            <TableColumn style="-fx-background-color: #d5dbdb;" text="Identificación" />
-            <TableColumn style="-fx-background-color: #d5dbdb;" text="Nombre" />
-            <TableColumn style="-fx-background-color: #d5dbdb;" text="Teléfono" />
-            <TableColumn style="-fx-background-color: #d5dbdb;" text="Correo" />
-            <TableColumn style="-fx-background-color: #d5dbdb;" text="Suscripción" />
+            <TableColumn fx:id="idCol" style="-fx-background-color: #d5dbdb;" text="Identificación" />
+            <TableColumn fx:id="nombreCol" style="-fx-background-color: #d5dbdb;" text="Nombre" />
+            <TableColumn fx:id="telefonoCol" style="-fx-background-color: #d5dbdb;" text="Teléfono" />
+            <TableColumn fx:id="correoCol" style="-fx-background-color: #d5dbdb;" text="Correo" />
+            <TableColumn fx:id="suscripcionCol" style="-fx-background-color: #d5dbdb;" text="Suscripción" />
         </columns>
         <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
