@@ -1,7 +1,13 @@
 package co.edu.uniquindio.clinica.controladores;
 
 import java.net.URL;
+import java.time.LocalDateTime;
 import java.util.ResourceBundle;
+
+import co.edu.uniquindio.clinica.modelo.entidades.Cita;
+import co.edu.uniquindio.clinica.modelo.entidades.Paciente;
+import co.edu.uniquindio.clinica.modelo.entidades.Servicio;
+import co.edu.uniquindio.clinica.modelo.enumer.EstadoCita;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -16,38 +22,34 @@ public class ListarCitaControlador {
     private URL location;
 
     @FXML
-    private Label ListaDeCitas;
+    private TableColumn<Cita, EstadoCita> TablaEstado;
 
     @FXML
-    private TableColumn<?, ?> TablaEstadoCol;
+    private TableColumn<Cita, LocalDateTime> TablaFecha;
 
     @FXML
-    private TableColumn<?, ?> TablaFechaCol;
+    private TableColumn<Cita, String> TablaId;
 
     @FXML
-    private TableColumn<?, ?> TablaHoraCol;
+    private TableColumn<Cita, Paciente> TablaPaciente;
 
     @FXML
-    private TableColumn<?, ?> TablaIdCol;
+    private TableColumn<Cita, Servicio> TablaServicio;
 
     @FXML
-    private TableColumn<?, ?> TablaPacienteCol;
-
-    @FXML
-    private TableColumn<?, ?> TablaServicioCol;
+    private Label TextListaDeCitas;
 
     @FXML
     private TableView<?> tablaCitas;
 
     @FXML
     void initialize() {
-        assert ListaDeCitas != null : "fx:id=\"ListaDeCitas\" was not injected: check your FXML file 'listarCita.fxml'.";
-        assert TablaEstadoCol != null : "fx:id=\"TablaEstadoCol\" was not injected: check your FXML file 'listarCita.fxml'.";
-        assert TablaFechaCol != null : "fx:id=\"TablaFechaCol\" was not injected: check your FXML file 'listarCita.fxml'.";
-        assert TablaHoraCol != null : "fx:id=\"TablaHoraCol\" was not injected: check your FXML file 'listarCita.fxml'.";
-        assert TablaIdCol != null : "fx:id=\"TablaIdCol\" was not injected: check your FXML file 'listarCita.fxml'.";
-        assert TablaPacienteCol != null : "fx:id=\"TablaPacienteCol\" was not injected: check your FXML file 'listarCita.fxml'.";
-        assert TablaServicioCol != null : "fx:id=\"TablaServicioCol\" was not injected: check your FXML file 'listarCita.fxml'.";
+        assert TablaEstado != null : "fx:id=\"TablaEstado\" was not injected: check your FXML file 'listarCita.fxml'.";
+        assert TablaFecha != null : "fx:id=\"TablaFecha\" was not injected: check your FXML file 'listarCita.fxml'.";
+        assert TablaId != null : "fx:id=\"TablaId\" was not injected: check your FXML file 'listarCita.fxml'.";
+        assert TablaPaciente != null : "fx:id=\"TablaPaciente\" was not injected: check your FXML file 'listarCita.fxml'.";
+        assert TablaServicio != null : "fx:id=\"TablaServicio\" was not injected: check your FXML file 'listarCita.fxml'.";
+        assert TextListaDeCitas != null : "fx:id=\"TextListaDeCitas\" was not injected: check your FXML file 'listarCita.fxml'.";
         assert tablaCitas != null : "fx:id=\"tablaCitas\" was not injected: check your FXML file 'listarCita.fxml'.";
 
     }

@@ -20,7 +20,6 @@
                 <TableColumn fx:id="TablaPaciente" style="-fx-background-color: #d5dbdb;" text="Paciente" />
                 <TableColumn fx:id="TablaServicio" style="-fx-background-color: #d5dbdb;" text="Servicio" />
                 <TableColumn fx:id="TablaFecha" style="-fx-background-color: #d5dbdb;" text="Fecha" />
-                <TableColumn fx:id="TablaHora" style="-fx-background-color: #d5dbdb;" text="Hora" />
                 <TableColumn fx:id="TablaEstado" style="-fx-background-color: #d5dbdb;" text="Estado" />
             </columns>
             <columnResizePolicy>

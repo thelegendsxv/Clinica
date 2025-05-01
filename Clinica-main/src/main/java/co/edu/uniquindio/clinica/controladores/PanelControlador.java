@@ -1,52 +1,47 @@
 package co.edu.uniquindio.clinica.controladores;
 
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.control.Tab;
-
-
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+import javafx.scene.control.Tab;
+import javafx.scene.image.ImageView;
 
-
-public class PanelControlador implements Initializable {
-
-
-    @FXML
-    private Tab tab1;
-
+public class PanelControlador {
 
     @FXML
-    private Tab tab2;
-
-
-    @FXML
-    private Tab tab3;
-
+    private ResourceBundle resources;
 
     @FXML
-    private Tab tab4;
+    private URL location;
 
+    @FXML
+    private ImageView Image;
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        try {
-            cargarTab(tab1, "/registroPaciente.fxml");
-            cargarTab(tab2, "/listaPacientes.fxml");
-            //Agregar los otros tabs…
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    @FXML
+    private Tab botonCrearCita;
+
+    @FXML
+    private Tab botonCrearPaciente;
+
+    @FXML
+    private Tab botonListarCita;
+
+    @FXML
+    private Tab botonListarpaciente;
+
+    @FXML
+    private Label textPanelClinica;
+
+    @FXML
+    void initialize() {
+        assert Image != null : "fx:id=\"Image\" was not injected: check your FXML file 'panel.fxml'.";
+        assert botonCrearCita != null : "fx:id=\"botonCrearCita\" was not injected: check your FXML file 'panel.fxml'.";
+        assert botonCrearPaciente != null : "fx:id=\"botonCrearPaciente\" was not injected: check your FXML file 'panel.fxml'.";
+        assert botonListarCita != null : "fx:id=\"botonListarCita\" was not injected: check your FXML file 'panel.fxml'.";
+        assert botonListarpaciente != null : "fx:id=\"botonListarpaciente\" was not injected: check your FXML file 'panel.fxml'.";
+        assert textPanelClinica != null : "fx:id=\"textPanelClinica\" was not injected: check your FXML file 'panel.fxml'.";
+
     }
 
-    private void cargarTab(Tab tab, String fxmlFile) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
-        Parent content = loader.load();
-        tab.setContent(content);
-    }
 }
-
-
-
