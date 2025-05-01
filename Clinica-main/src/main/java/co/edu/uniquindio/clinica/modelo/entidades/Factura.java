@@ -12,7 +12,7 @@ import java.time.LocalDate;
 @Setter
 @Builder
 @ToString
-public class Factura {
+public class    Factura {
     private LocalDate fecha;
     private String pacienteNombre;
     private String servicio;

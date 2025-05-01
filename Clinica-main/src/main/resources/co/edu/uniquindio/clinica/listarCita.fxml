@@ -8,7 +8,7 @@
 
 <VBox spacing="20.0" style="-fx-background-color: #aab7b8;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.clinica.controladores.ListarCitaControlador">
     <children>
-        <Label text="Lista de Citas" textFill="#0f0f0f" translateX="190.0">
+        <Label fx:id="ListaDeCitas" text="Lista de Citas" textFill="#0f0f0f" translateX="190.0">
             <font>
                 <Font size="20.0" />
             </font>
@@ -16,12 +16,12 @@
 
         <TableView fx:id="tablaCitas" style="-fx-background-color: #fae5d3;" VBox.vgrow="ALWAYS">
             <columns>
-                <TableColumn style="-fx-background-color: #d5dbdb;" text="ID" />
-                <TableColumn style="-fx-background-color: #d5dbdb;" text="Paciente" />
-                <TableColumn style="-fx-background-color: #d5dbdb;" text="Servicio" />
-                <TableColumn style="-fx-background-color: #d5dbdb;" text="Fecha" />
-                <TableColumn style="-fx-background-color: #d5dbdb;" text="Hora" />
-                <TableColumn style="-fx-background-color: #d5dbdb;" text="Estado" />
+                <TableColumn fx:id="TablaId" style="-fx-background-color: #d5dbdb;" text="ID" />
+                <TableColumn fx:id="TablaPaciente" style="-fx-background-color: #d5dbdb;" text="Paciente" />
+                <TableColumn fx:id="TablaServicio" style="-fx-background-color: #d5dbdb;" text="Servicio" />
+                <TableColumn fx:id="TablaFecha" style="-fx-background-color: #d5dbdb;" text="Fecha" />
+                <TableColumn fx:id="TablaHora" style="-fx-background-color: #d5dbdb;" text="Hora" />
+                <TableColumn fx:id="TablaEstado" style="-fx-background-color: #d5dbdb;" text="Estado" />
             </columns>
             <columnResizePolicy>
                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
