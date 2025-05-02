@@ -6,6 +6,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.time.LocalDateTime;
 import java.util.LinkedList;
@@ -14,6 +15,7 @@ import java.util.UUID;
 
 @Getter
 @Setter
+@ToString
 public class Clinica {
     private ObservableList<Paciente> pacientes;
     private List<Cita> citas;

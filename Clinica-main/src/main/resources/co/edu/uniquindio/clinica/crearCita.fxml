@@ -29,7 +29,6 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             </rowConstraints>
             <children>
                 <Text id="TextPaciente" fx:id="TextPaciente" strokeType="OUTSIDE" strokeWidth="0.0" text="Paciente" translateX="100.0" translateY="10.0" />
@@ -41,11 +40,8 @@
                 <Text id="TextFecha" fx:id="TextFecha" strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha" translateX="100.0" GridPane.rowIndex="2" />
                 <DatePicker id="RegistrarFecha" fx:id="SeleccioneFecha" translateX="-50.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
 
-                <Text id="TextHora" fx:id="TextHora" strokeType="OUTSIDE" strokeWidth="0.0" text="Hora" translateX="100.0" GridPane.rowIndex="3" />
-                <ComboBox id="SeleccioneUnaHora" fx:id="SeleccioneHora" promptText="Seleccione una hora" translateX="-50.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-
-                <Text id="TextNota" fx:id="TextNota" strokeType="OUTSIDE" strokeWidth="0.0" text="Nota" translateX="100.0" translateY="-70.0" GridPane.rowIndex="5" />
-                <TextField id="IngresarNota" fx:id="IngreseNotas" promptText="Ingrese notas adicionales" translateX="-50.0" translateY="-70.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                <Text id="TextNota" fx:id="TextNota" strokeType="OUTSIDE" strokeWidth="0.0" text="Nota" translateX="100.0" translateY="-70.0" GridPane.rowIndex="4" />
+                <TextField id="IngresarNota" fx:id="IngreseNotas" promptText="Ingrese notas adicionales" translateX="-50.0" translateY="-70.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             </children>
         </GridPane>
         <Button id="BotonCrearCita" fx:id="BotonCrearCita" mnemonicParsing="false" onAction="#crearCita" style="-fx-background-color: #d5dbdb;" text="Crear Cita" translateX="270.0" translateY="-40.0" />
