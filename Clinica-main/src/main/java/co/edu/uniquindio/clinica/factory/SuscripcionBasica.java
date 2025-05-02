@@ -4,9 +4,16 @@ import co.edu.uniquindio.clinica.modelo.entidades.Factura;
 import co.edu.uniquindio.clinica.modelo.entidades.Servicio;
 import co.edu.uniquindio.clinica.modelo.entidades.ServicioSuscripcion;
 import co.edu.uniquindio.clinica.modelo.enumer.TipoDescuento;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 import java.util.List;
 import java.util.ArrayList;  // Importar ArrayList para inicializar la lista
+
+@Getter
+@Setter
+@ToString
 
 public class SuscripcionBasica implements Suscripcion {
     private List<ServicioSuscripcion> serviciosDisponibles;  // Lista de servicios disponibles
@@ -83,4 +90,8 @@ public class SuscripcionBasica implements Suscripcion {
         return null;
     }
 
+    @Override
+    public String getTipo() {
+        return "Basica";  // Devuelve el tipo de suscripción
+    }
 }

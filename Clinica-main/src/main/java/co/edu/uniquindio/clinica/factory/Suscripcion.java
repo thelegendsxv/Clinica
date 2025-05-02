@@ -11,4 +11,6 @@ public interface Suscripcion {
     public List<ServicioSuscripcion> getServiciosDisponibles();
     public Factura generarFacturaCobro(Servicio servicio, String nombre);
     public double calcularTotal(Servicio servicio);
+    public String getTipo();  // Este es el nuevo método
+
 }
