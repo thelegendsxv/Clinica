@@ -1,6 +1,7 @@
 package co.edu.uniquindio.clinica.controladores;
 
 
+import co.edu.uniquindio.clinica.modelo.entidades.Clinica;
 import co.edu.uniquindio.clinica.servicios.ClinicaServicio;
 
 
@@ -16,21 +17,21 @@ public class ControladorPrincipal {
     private static ControladorPrincipal instancia;
 
     @Getter
-    private final ClinicaServicio clinica;
+    private Clinica clinica;
 
-
-    private ControladorPrincipal(){
-        clinica = new ClinicaServicio();
+    private ControladorPrincipal() {
     }
 
-
-    public static ControladorPrincipal getInstancia(){
-        if(instancia == null){
+    public static ControladorPrincipal getInstancia() {
+        if (instancia == null) {
             instancia = new ControladorPrincipal();
         }
         return instancia;
     }
 
+    public void inicializarConClinica(Clinica clinica) {
+        this.clinica = clinica;
+    }
 
     public void cerrarVentana(Node node){
         Stage stage = (Stage) node.getScene().getWindow();
@@ -45,6 +46,7 @@ public class ControladorPrincipal {
         alert.setContentText(mensaje);
         alert.showAndWait();
     }
+
 
 
 }

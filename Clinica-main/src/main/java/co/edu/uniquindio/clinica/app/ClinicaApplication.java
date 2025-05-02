@@ -1,5 +1,6 @@
 package co.edu.uniquindio.clinica.app;
 
+import co.edu.uniquindio.clinica.controladores.ControladorPrincipal;
 import co.edu.uniquindio.clinica.factory.Suscripcion;
 import co.edu.uniquindio.clinica.factory.SuscripcionBasicaFactory;
 import co.edu.uniquindio.clinica.factory.SuscripcionFactory;
@@ -19,6 +20,7 @@ import java.util.Objects;
 
 public class ClinicaApplication extends Application {
     public void datos() {
+        ControladorPrincipal controladorPrincipal = ControladorPrincipal.getInstancia();
         try {
             Clinica clinica = new Clinica();
 
@@ -27,28 +29,30 @@ public class ClinicaApplication extends Application {
             Suscripcion suscripcionPremium = suscripcionFactory2.crearSuscripcion();
             Suscripcion suscripcionBasica = suscripcionFactory.crearSuscripcion();
 
-            // Agregar pacientes
+
             clinica.agregarPaciente("123", "Santiago Torres", "3216549870", "santiago.rodriguezt@uqvirtual.edu.co", suscripcionPremium);
             clinica.agregarPaciente("124", "Daiana Ramirez", "911694991", "santiago.rodriguezt@uqvirtual.edu.co", suscripcionBasica);
 
-            // Agregar servicios
+
             clinica.agregarServicio("Consulta General", 80000);
             clinica.agregarServicio("Odontología", 120000);
             clinica.agregarServicio("Terapia Física", 100000);
 
-            // Obtener paciente Santiago y agendar cita
+
             Paciente pacienteSanti = clinica.getPacientes().get(0);
             Servicio servicioGeneral = clinica.getServicios().get(0);
             LocalDateTime fechaCitaSanti = LocalDateTime.now().plusDays(2).withHour(10).withMinute(30);
             clinica.agendarCita(pacienteSanti, servicioGeneral, fechaCitaSanti);
 
-            // Obtener paciente Daiana y agendarle también una cita con el mismo servicio
+
             Paciente pacienteDaiana = clinica.getPacientes().get(1);
             LocalDateTime fechaCitaDaiana = LocalDateTime.now().plusDays(3).withHour(9).withMinute(0);
             clinica.agendarCita(pacienteDaiana, servicioGeneral, fechaCitaDaiana);
 
             System.out.println(clinica.getPacientes());
             System.out.println(clinica.getServicios());
+
+            controladorPrincipal.inicializarConClinica(clinica);
 
         } catch (Exception e) {
             System.err.println("Error: " + e.getMessage());
