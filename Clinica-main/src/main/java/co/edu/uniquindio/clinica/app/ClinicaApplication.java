@@ -54,14 +54,19 @@ public class ClinicaApplication extends Application {
             System.err.println("Error: " + e.getMessage());
         }
     }
+
+    @Override
     public void start(Stage stage) throws Exception {
 
         datos();
         FXMLLoader loader = new FXMLLoader(ClinicaApplication.class.getResource("/co/edu/uniquindio/clinica/panel.fxml"));
         Parent parent = loader.load();
 
-        Scene scene = new Scene(parent);
-        stage.getIcons().add(new Image(Objects.requireNonNull(ClinicaApplication.class.getResourceAsStream("/Img/medicamento.png"))));
+        Scene scene = new Scene(parent, 800, 600);
+
+        stage.getIcons().add(new Image(Objects.requireNonNull(
+                ClinicaApplication.class.getResourceAsStream("/Img/medicamento.png"))));
+
         stage.setScene(scene);
         stage.setTitle("Clinica");
         stage.setResizable(true);

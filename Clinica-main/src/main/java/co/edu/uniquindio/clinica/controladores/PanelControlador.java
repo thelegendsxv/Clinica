@@ -43,11 +43,6 @@ public class PanelControlador implements Initializable {
     @FXML
     private TabPane tabPane;
 
-    @FXML
-    void initialize() {
-        configuracionVentanas();
-
-    }
 
     private void configuracionVentanas() {
         tabPane.getSelectionModel().selectedItemProperty().addListener((obs, oldTab, newTab) -> {
