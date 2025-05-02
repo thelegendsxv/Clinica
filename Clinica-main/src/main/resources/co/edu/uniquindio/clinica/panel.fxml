@@ -24,13 +24,11 @@
         </Label>
     </HBox>
 
-    <TabPane VBox.vgrow="ALWAYS">
-        <tabs>
-            <Tab fx:id="botonCrearPaciente" closable="false" style="-fx-background-color: #d5dbdb;" text="Crear paciente" />
-            <Tab fx:id="botonListarpaciente" closable="false" style="-fx-background-color: #d5dbdb;" text="Listar pacientes" />
-            <Tab fx:id="botonCrearCita" closable="false" style="-fx-background-color: #d5dbdb;" text="Crear cita" />
-            <Tab fx:id="botonListarCita" closable="false" style="-fx-background-color: #d5dbdb;" text="Listar citas" />
-        </tabs>
+    <TabPane fx:id="tabPane" VBox.vgrow="ALWAYS">
+        <Tab fx:id="botonCrearPaciente" closable="false" style="-fx-background-color: #d5dbdb;" text="Crear paciente" />
+        <Tab fx:id="botonListarpaciente" closable="false" style="-fx-background-color: #d5dbdb;" text="Listar pacientes" />
+        <Tab fx:id="botonCrearCita" closable="false" style="-fx-background-color: #d5dbdb;" text="Crear cita" />
+        <Tab fx:id="botonListarCita" closable="false" style="-fx-background-color: #d5dbdb;" text="Listar citas" />
     </TabPane>
 
 </VBox>

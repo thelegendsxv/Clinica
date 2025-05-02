@@ -1,7 +1,11 @@
 package co.edu.uniquindio.clinica.controladores;
 
 import java.net.URL;
+import java.time.LocalDateTime;
 import java.util.ResourceBundle;
+
+import co.edu.uniquindio.clinica.modelo.entidades.Paciente;
+import co.edu.uniquindio.clinica.modelo.entidades.Servicio;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -28,13 +32,13 @@ public class CrearCitaControlador {
     private DatePicker SeleccioneFecha;
 
     @FXML
-    private ComboBox<?> SeleccioneHora;
+    private ComboBox<LocalDateTime> SeleccioneHora;
 
     @FXML
-    private ComboBox<?> SeleccionePaciente;
+    private ComboBox<Paciente> SeleccionePaciente;
 
     @FXML
-    private ComboBox<?> SeleccioneServicio;
+    private ComboBox<Servicio> SeleccioneServicio;
 
     @FXML
     private Text TextCrearCita;

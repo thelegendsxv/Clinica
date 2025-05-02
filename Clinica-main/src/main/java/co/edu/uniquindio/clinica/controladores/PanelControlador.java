@@ -1,11 +1,17 @@
 package co.edu.uniquindio.clinica.controladores;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 
 public class PanelControlador {
 
@@ -34,14 +40,42 @@ public class PanelControlador {
     private Label textPanelClinica;
 
     @FXML
+    private TabPane tabPane;
+
+    @FXML
     void initialize() {
-        assert Image != null : "fx:id=\"Image\" was not injected: check your FXML file 'panel.fxml'.";
-        assert botonCrearCita != null : "fx:id=\"botonCrearCita\" was not injected: check your FXML file 'panel.fxml'.";
-        assert botonCrearPaciente != null : "fx:id=\"botonCrearPaciente\" was not injected: check your FXML file 'panel.fxml'.";
-        assert botonListarCita != null : "fx:id=\"botonListarCita\" was not injected: check your FXML file 'panel.fxml'.";
-        assert botonListarpaciente != null : "fx:id=\"botonListarpaciente\" was not injected: check your FXML file 'panel.fxml'.";
-        assert textPanelClinica != null : "fx:id=\"textPanelClinica\" was not injected: check your FXML file 'panel.fxml'.";
+        configuracionVentanas();
 
     }
 
+    private void configuracionVentanas() {
+        tabPane.getSelectionModel().selectedItemProperty().addListener((obs, oldTab, newTab) -> {
+            if (newTab == botonCrearPaciente) {
+                cargarContenido("/co/edu/uniquindio/clinica/crearPaciente.fxml", botonCrearPaciente);
+            } else if (newTab == botonListarpaciente) {
+                cargarContenido("/co/edu/uniquindio/clinica/listaPacientes.fxml", botonListarpaciente);
+            } else if (newTab == botonCrearCita) {
+                cargarContenido("/co/edu/uniquindio/clinica/crearCita.fxml", botonCrearCita);
+            } else if (newTab == botonListarCita) {
+                cargarContenido("/co/edu/uniquindio/clinica/listarCita.fxml", botonListarCita);
+            }
+        });
+    }
+
+    private void cargarContenido(String rutaFXML, Tab tab) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(rutaFXML));
+            Parent root = loader.load();
+
+            // Solo cambia el contenido de la pestaña, no creamos una nueva ventana
+            if (tab.getContent() == null) {
+                tab.setContent(root);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
+
+
+
