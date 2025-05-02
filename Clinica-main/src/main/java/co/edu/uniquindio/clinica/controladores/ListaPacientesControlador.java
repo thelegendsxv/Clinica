@@ -46,7 +46,7 @@ public class ListaPacientesControlador {
     }
 
     public void actualizarTabla() {
-        pacientes.setAll(ControladorPrincipal.getInstancia().getClinica().getPacientes());
+        pacientes.setAll(ControladorPrincipal.getInstancia().getClinica().getPacienteServicio().getPacienteRepositorio().getPacientes());
         tablaPacientes.setItems(pacientes);
         tablaPacientes.refresh();
     }

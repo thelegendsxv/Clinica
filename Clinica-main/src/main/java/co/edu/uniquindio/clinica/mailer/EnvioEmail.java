@@ -1,4 +1,4 @@
-package co.edu.uniquindio.clinica.modelo.entidades;
+package co.edu.uniquindio.clinica.mailer;
 
 import org.simplejavamail.api.email.Email;
 import org.simplejavamail.api.mailer.Mailer;
@@ -14,7 +14,7 @@ EnvioEmail {
 
 
         Email email = EmailBuilder.startingBlank()
-                .from("SU_EMA")
+                .from("proyectofinalprogramacion053@gmail.com")
                 .to(destinatario)
                 .withSubject(asunto)
                 .withPlainText(mensaje)
@@ -22,7 +22,7 @@ EnvioEmail {
 
 
         try (Mailer mailer = MailerBuilder
-                .withSMTPServer("smtp.gmail.com", 587, "proyectofinalprogramacion053@gmail.com", "Proyectofinal2.")
+                .withSMTPServer("smtp.gmail.com", 587, "proyectofinalprogramacion053@gmail.com", "gohp ilel gmil kfpb")
                 .withTransportStrategy(TransportStrategy.SMTP_TLS)
                 .withDebugLogging(true)
                 .buildMailer()) {

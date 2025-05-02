@@ -5,6 +5,7 @@ import co.edu.uniquindio.clinica.factory.SuscripcionBasicaFactory;
 import co.edu.uniquindio.clinica.factory.SuscripcionFactory;
 import co.edu.uniquindio.clinica.factory.SuscripcionPremiumFactory;
 import co.edu.uniquindio.clinica.modelo.entidades.*;
+import co.edu.uniquindio.clinica.servicios.ClinicaServicio;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -12,6 +13,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
 public class CrearPacienteControlador {
+    private final ClinicaServicio clinica = ControladorPrincipal.getInstancia().getClinica();
 
     private ListaPacientesControlador listaPacientesControlador;
 
@@ -42,32 +44,14 @@ public class CrearPacienteControlador {
             String telefono = telefonoTextField.getText();
             String correo = correoTextField.getText();
             String tipo = tipoSuscripcion.getValue();
+            validarCampos(id, nombre, telefono, correo, tipo);
 
-            // Validaciones
-            if (id.isEmpty() || nombre.isEmpty() || telefono.isEmpty() || correo.isEmpty() || tipo == null) {
-                mostrarAlerta("Campos incompletos", "Todos los campos deben estar llenos.");
-                return;
-            }
-
-            if (!telefono.matches("\\d+")) {
-                mostrarAlerta("Teléfono inválido", "El teléfono solo debe contener números.");
-                return;
-            }
-
-            if (!correo.contains("@") || !correo.contains(".")) {
-                mostrarAlerta("Correo inválido", "El correo debe contener un '@' y un dominio.");
-                return;
-            }
-
-            // Crear suscripción
             SuscripcionFactory suscripcionFactory = tipo.equals("Básica") ?
                     new SuscripcionBasicaFactory() : new SuscripcionPremiumFactory();
 
             Suscripcion suscripcion = suscripcionFactory.crearSuscripcion();
 
-            // Crear paciente
-            Clinica clinica = ClinicaSingleton.getInstancia();
-            clinica.agregarPaciente(id, nombre, telefono, correo, suscripcion);
+            clinica.registrarPaciente(id, nombre, telefono, correo, suscripcion);
 
             if (listaPacientesControlador != null) {
                 listaPacientesControlador.actualizarTabla(); // <- Corrección clave
@@ -96,6 +80,24 @@ public class CrearPacienteControlador {
         alert.setHeaderText(null);
         alert.setContentText(mensaje);
         alert.showAndWait();
+    }
+
+    public void validarCampos(String id, String nombre, String telefono, String correo, String tipo){
+        if (id.isEmpty() || nombre.isEmpty() || telefono.isEmpty() || correo.isEmpty() || tipo == null) {
+            mostrarAlerta("Campos incompletos", "Todos los campos deben estar llenos.");
+            return;
+        }
+
+        if (!telefono.matches("\\d+")) {
+            mostrarAlerta("Teléfono inválido", "El teléfono solo debe contener números.");
+            return;
+        }
+
+        if (!correo.contains("@") || !correo.contains(".")) {
+            mostrarAlerta("Correo inválido", "El correo debe contener un '@' y un dominio.");
+            return;
+        }
+
     }
 
     @FXML

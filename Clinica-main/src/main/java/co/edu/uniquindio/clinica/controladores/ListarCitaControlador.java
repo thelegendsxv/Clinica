@@ -50,7 +50,7 @@ public class ListarCitaControlador {
     }
 
     private void actualizarTabla() {
-        citas.setAll(ControladorPrincipal.getInstancia().getClinica().getCitas());
+        citas.setAll(ControladorPrincipal.getInstancia().getClinica().getCitaServicio().getCitaRepositorio().getCitas());
         tablaCitas.setItems(citas);
         tablaCitas.refresh();
     }

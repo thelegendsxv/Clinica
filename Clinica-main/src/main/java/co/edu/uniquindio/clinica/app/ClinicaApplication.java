@@ -5,9 +5,9 @@ import co.edu.uniquindio.clinica.factory.Suscripcion;
 import co.edu.uniquindio.clinica.factory.SuscripcionBasicaFactory;
 import co.edu.uniquindio.clinica.factory.SuscripcionFactory;
 import co.edu.uniquindio.clinica.factory.SuscripcionPremiumFactory;
-import co.edu.uniquindio.clinica.modelo.entidades.Clinica;
 import co.edu.uniquindio.clinica.modelo.entidades.Paciente;
 import co.edu.uniquindio.clinica.modelo.entidades.Servicio;
+import co.edu.uniquindio.clinica.servicios.ClinicaServicio;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -22,7 +22,9 @@ public class ClinicaApplication extends Application {
     public void datos() {
         ControladorPrincipal controladorPrincipal = ControladorPrincipal.getInstancia();
         try {
-            Clinica clinica = new Clinica();
+            ClinicaServicio clinica = new ClinicaServicio();
+            controladorPrincipal.inicializarConClinica(clinica);
+
 
             SuscripcionFactory suscripcionFactory = new SuscripcionBasicaFactory();
             SuscripcionFactory suscripcionFactory2 = new SuscripcionPremiumFactory();
@@ -30,29 +32,29 @@ public class ClinicaApplication extends Application {
             Suscripcion suscripcionBasica = suscripcionFactory.crearSuscripcion();
 
 
-            clinica.agregarPaciente("123", "Santiago Torres", "3216549870", "santiago.rodriguezt@uqvirtual.edu.co", suscripcionPremium);
-            clinica.agregarPaciente("124", "Daiana Ramirez", "911694991", "santiago.rodriguezt@uqvirtual.edu.co", suscripcionBasica);
+            controladorPrincipal.getClinica().registrarPaciente("123", "Santiago Torres", "3216549870", "santiago.rodriguezt@uqvirtual.edu.co", suscripcionPremium);
+            controladorPrincipal.getClinica().registrarPaciente("124", "Daiana Ramirez", "911694991", "santiago.rodriguezt@uqvirtual.edu.co", suscripcionBasica);
 
 
-            clinica.agregarServicio("Consulta General", 80000);
-            clinica.agregarServicio("Odontología", 120000);
-            clinica.agregarServicio("Terapia Física", 100000);
+            controladorPrincipal.getClinica().registrarServicio("Consulta General", 80000);
+            controladorPrincipal.getClinica().registrarServicio("Odontología", 120000);
+            controladorPrincipal.getClinica().registrarServicio("Terapia Física", 100000);
 
 
-            Paciente pacienteSanti = clinica.getPacientes().get(0);
-            Servicio servicioGeneral = clinica.getServicios().get(0);
+            Paciente pacienteSanti = controladorPrincipal.getClinica().getPacienteServicio().getPacienteRepositorio().getPacientes().get(0);
+            Servicio servicioGeneral = controladorPrincipal.getClinica().getServicios().get(0);
             LocalDateTime fechaCitaSanti = LocalDateTime.now().plusDays(2).withHour(10).withMinute(30);
-            clinica.agendarCita(pacienteSanti, servicioGeneral, fechaCitaSanti);
+            controladorPrincipal.getClinica().agendarCita(pacienteSanti, servicioGeneral, fechaCitaSanti);
 
 
-            Paciente pacienteDaiana = clinica.getPacientes().get(1);
+            Paciente pacienteDaiana = controladorPrincipal.getClinica().getPacienteServicio().getPacienteRepositorio().getPacientes().get(1);
             LocalDateTime fechaCitaDaiana = LocalDateTime.now().plusDays(3).withHour(9).withMinute(0);
-            clinica.agendarCita(pacienteDaiana, servicioGeneral, fechaCitaDaiana);
+            controladorPrincipal.getClinica().agendarCita(pacienteDaiana, servicioGeneral, fechaCitaDaiana);
 
-            System.out.println(clinica.getPacientes());
-            System.out.println(clinica.getServicios());
+            System.out.println(controladorPrincipal.getClinica().getPacienteServicio().getPacienteRepositorio().getPacientes().get(1));
+            System.out.println(controladorPrincipal.getClinica().getServicios());
 
-            controladorPrincipal.inicializarConClinica(clinica);
+
 
         } catch (Exception e) {
             System.err.println("Error: " + e.getMessage());

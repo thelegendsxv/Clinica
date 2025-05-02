@@ -1,7 +1,6 @@
 package co.edu.uniquindio.clinica.controladores;
 
 
-import co.edu.uniquindio.clinica.modelo.entidades.Clinica;
 import co.edu.uniquindio.clinica.servicios.ClinicaServicio;
 
 
@@ -17,7 +16,7 @@ public class ControladorPrincipal {
     private static ControladorPrincipal instancia;
 
     @Getter
-    private Clinica clinica;
+    private ClinicaServicio clinica;
 
     private ControladorPrincipal() {
     }
@@ -29,7 +28,7 @@ public class ControladorPrincipal {
         return instancia;
     }
 
-    public void inicializarConClinica(Clinica clinica) {
+    public void inicializarConClinica(ClinicaServicio clinica) {
         this.clinica = clinica;
     }
 

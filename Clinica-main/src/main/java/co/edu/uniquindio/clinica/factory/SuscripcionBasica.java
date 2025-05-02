@@ -16,11 +16,11 @@ import java.util.ArrayList;  // Importar ArrayList para inicializar la lista
 @ToString
 
 public class SuscripcionBasica implements Suscripcion {
-    private List<ServicioSuscripcion> serviciosDisponibles;  // Lista de servicios disponibles
+    private List<ServicioSuscripcion> serviciosDisponibles;
 
     // Constructor que inicializa la lista de servicios
     public SuscripcionBasica() {
-        serviciosDisponibles = new ArrayList<>();  // Inicializamos la lista
+        serviciosDisponibles = new ArrayList<>();
     }
 
     @Override
@@ -93,5 +93,6 @@ public class SuscripcionBasica implements Suscripcion {
     @Override
     public String getTipo() {
         return "Basica";  // Devuelve el tipo de suscripción
+
     }
 }
