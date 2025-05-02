@@ -8,7 +8,7 @@
 
 <VBox spacing="20.0" style="-fx-background-color: #aab7b8;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.clinica.controladores.ListarCitaControlador">
     <children>
-        <Label fx:id="TextListaDeCitas" text="Lista de Citas" textFill="#0f0f0f" translateX="190.0">
+        <Label fx:id="TextListaDeCitas" text="Lista de Citas" textFill="#0f0f0f" translateX="140.0">
             <font>
                 <Font size="20.0" />
             </font>

@@ -1,38 +1,19 @@
 package co.edu.uniquindio.clinica.controladores;
 
-import java.net.URL;
-import java.time.LocalDateTime;
-import java.util.ResourceBundle;
-
+import co.edu.uniquindio.clinica.modelo.entidades.Clinica;
 import co.edu.uniquindio.clinica.modelo.entidades.Paciente;
 import co.edu.uniquindio.clinica.modelo.entidades.Servicio;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
-import javafx.scene.text.Text;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 public class CrearCitaControlador {
-
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
-
-    @FXML
-    private Button BotonCrearCita;
-
-    @FXML
-    private TextField IngreseNotas;
-
-    @FXML
-    private DatePicker SeleccioneFecha;
-
-    @FXML
-    private ComboBox<LocalDateTime> SeleccioneHora;
 
     @FXML
     private ComboBox<Paciente> SeleccionePaciente;
@@ -41,44 +22,65 @@ public class CrearCitaControlador {
     private ComboBox<Servicio> SeleccioneServicio;
 
     @FXML
-    private Text TextCrearCita;
+    private DatePicker SeleccioneFecha;
 
     @FXML
-    private Text TextFecha;
+    private ComboBox<String> SeleccioneHora;
 
     @FXML
-    private Text TextHora;
+    private TextField IngreseNotas;
+
+    private final Clinica clinica = ControladorPrincipal.getInstancia().getClinica();
 
     @FXML
-    private Text TextNota;
+    public void initialize() {
+        SeleccionePaciente.getItems().addAll(clinica.getPacientes());
+        SeleccioneServicio.getItems().addAll(clinica.getServicios());
 
-    @FXML
-    private Text TextPaciente;
-
-    @FXML
-    private Text TextServicio;
-
-    @FXML
-    void crearCita(ActionEvent event) {
-
+        // Horas disponibles de 8:00 a 17:00 cada 30 minutos
+        for (int hour = 8; hour <= 17; hour++) {
+            SeleccioneHora.getItems().add(String.format("%02d:00", hour));
+            SeleccioneHora.getItems().add(String.format("%02d:30", hour));
+        }
     }
 
     @FXML
-    void initialize() {
-        assert BotonCrearCita != null : "fx:id=\"BotonCrearCita\" was not injected: check your FXML file 'crearCita.fxml'.";
-        assert IngreseNotas != null : "fx:id=\"IngreseNotas\" was not injected: check your FXML file 'crearCita.fxml'.";
-        assert SeleccioneFecha != null : "fx:id=\"SeleccioneFecha\" was not injected: check your FXML file 'crearCita.fxml'.";
-        assert SeleccioneHora != null : "fx:id=\"SeleccioneHora\" was not injected: check your FXML file 'crearCita.fxml'.";
-        assert SeleccionePaciente != null : "fx:id=\"SeleccionePaciente\" was not injected: check your FXML file 'crearCita.fxml'.";
-        assert SeleccioneServicio != null : "fx:id=\"SeleccioneServicio\" was not injected: check your FXML file 'crearCita.fxml'.";
-        assert TextCrearCita != null : "fx:id=\"TextCrearCita\" was not injected: check your FXML file 'crearCita.fxml'.";
-        assert TextFecha != null : "fx:id=\"TextFecha\" was not injected: check your FXML file 'crearCita.fxml'.";
-        assert TextHora != null : "fx:id=\"TextHora\" was not injected: check your FXML file 'crearCita.fxml'.";
-        assert TextNota != null : "fx:id=\"TextNota\" was not injected: check your FXML file 'crearCita.fxml'.";
-        assert TextPaciente != null : "fx:id=\"TextPaciente\" was not injected: check your FXML file 'crearCita.fxml'.";
-        assert TextServicio != null : "fx:id=\"TextServicio\" was not injected: check your FXML file 'crearCita.fxml'.";
+    public void crearCita() {
+        Paciente paciente = SeleccionePaciente.getValue();
+        Servicio servicio = SeleccioneServicio.getValue();
+        LocalDate fecha = SeleccioneFecha.getValue();
+        String horaTexto = SeleccioneHora.getValue();
 
+        if (paciente == null || servicio == null || fecha == null || horaTexto == null) {
+            mostrarAlerta("Debe completar todos los campos.");
+            return;
+        }
 
+        LocalTime hora = LocalTime.parse(horaTexto);
+        LocalDateTime fechaHora = LocalDateTime.of(fecha, hora);
+
+        try {
+            clinica.agendarCita(paciente, servicio, fechaHora);
+            mostrarAlerta("Cita creada exitosamente.");
+            limpiarCampos();
+        } catch (Exception e) {
+            mostrarAlerta("Error al crear la cita: " + e.getMessage());
+        }
     }
 
+    private void limpiarCampos() {
+        SeleccionePaciente.setValue(null);
+        SeleccioneServicio.setValue(null);
+        SeleccioneFecha.setValue(null);
+        SeleccioneHora.setValue(null);
+        IngreseNotas.clear();
+    }
+
+    private void mostrarAlerta(String mensaje) {
+        Alert alert = new Alert(AlertType.INFORMATION);
+        alert.setTitle("Información");
+        alert.setHeaderText(null);
+        alert.setContentText(mensaje);
+        alert.showAndWait();
+    }
 }

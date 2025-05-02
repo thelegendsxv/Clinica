@@ -1,49 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<VBox style="-fx-background-color: #fae5d3;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.clinica.controladores.CrearCitaControlador">
-    <children>
-        <Text id="TextCrearCita" fx:id="TextCrearCita" strokeType="OUTSIDE" strokeWidth="0.0" text="Crear Cita" translateX="270.0" translateY="5.0">
-            <font>
-                <Font size="16.0" />
-            </font>
-        </Text>
-        <GridPane prefHeight="400.0" prefWidth="600.0">
-            <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0" />
-            </columnConstraints>
-            <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            </rowConstraints>
-            <children>
-                <Text id="TextPaciente" fx:id="TextPaciente" strokeType="OUTSIDE" strokeWidth="0.0" text="Paciente" translateX="100.0" translateY="10.0" />
-                <ComboBox id="SeleccioneUnPaciente" fx:id="SeleccionePaciente" promptText="Seleccione un paciente" translateX="-50.0" translateY="10.0" GridPane.columnIndex="1" />
+<VBox spacing="20" alignment="TOP_CENTER" style="-fx-background-color: #fae5d3;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.clinica.controladores.CrearCitaControlador">
+    <Text text="Crear Cita">
+        <font>
+            <Font size="20.0" />
+        </font>
+    </Text>
 
-                <Text id="TextServicio" fx:id="TextServicio" strokeType="OUTSIDE" strokeWidth="0.0" text="Servicio" translateX="100.0" GridPane.rowIndex="1" />
-                <ComboBox id="SelecicioneUnServicio" fx:id="SeleccioneServicio" promptText="Seleccione un servicio" translateX="-50.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+    <GridPane hgap="10" vgap="15">
+        <columnConstraints>
+            <ColumnConstraints halignment="RIGHT"/>
+            <ColumnConstraints hgrow="ALWAYS"/>
+        </columnConstraints>
 
-                <Text id="TextFecha" fx:id="TextFecha" strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha" translateX="100.0" GridPane.rowIndex="2" />
-                <DatePicker id="RegistrarFecha" fx:id="SeleccioneFecha" translateX="-50.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+        <Label text="Paciente:" GridPane.rowIndex="0" GridPane.columnIndex="0" />
+        <ComboBox fx:id="SeleccionePaciente" promptText="Seleccione un paciente" GridPane.rowIndex="0" GridPane.columnIndex="1" />
 
-                <Text id="TextNota" fx:id="TextNota" strokeType="OUTSIDE" strokeWidth="0.0" text="Nota" translateX="100.0" translateY="-70.0" GridPane.rowIndex="4" />
-                <TextField id="IngresarNota" fx:id="IngreseNotas" promptText="Ingrese notas adicionales" translateX="-50.0" translateY="-70.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            </children>
-        </GridPane>
-        <Button id="BotonCrearCita" fx:id="BotonCrearCita" mnemonicParsing="false" onAction="#crearCita" style="-fx-background-color: #d5dbdb;" text="Crear Cita" translateX="270.0" translateY="-40.0" />
-    </children>
+        <Label text="Servicio:" GridPane.rowIndex="1" GridPane.columnIndex="0" />
+        <ComboBox fx:id="SeleccioneServicio" promptText="Seleccione un servicio" GridPane.rowIndex="1" GridPane.columnIndex="1" />
+
+        <Label text="Fecha:" GridPane.rowIndex="2" GridPane.columnIndex="0" />
+        <DatePicker fx:id="SeleccioneFecha" GridPane.rowIndex="2" GridPane.columnIndex="1" />
+
+        <Label text="Hora:" GridPane.rowIndex="3" GridPane.columnIndex="0" />
+        <ComboBox fx:id="SeleccioneHora" promptText="Seleccione una hora" GridPane.rowIndex="3" GridPane.columnIndex="1" />
+
+        <Label text="Notas:" GridPane.rowIndex="4" GridPane.columnIndex="0" />
+        <TextField fx:id="IngreseNotas" promptText="Ingrese notas adicionales" GridPane.rowIndex="4" GridPane.columnIndex="1" />
+    </GridPane>
+
+    <Button fx:id="BotonCrearCita" text="Crear Cita" onAction="#crearCita" style="-fx-background-color: #d5dbdb;" />
 </VBox>
