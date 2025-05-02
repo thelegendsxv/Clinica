@@ -1,84 +1,52 @@
 package co.edu.uniquindio.clinica.controladores;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
 import javafx.scene.image.ImageView;
-import javafx.stage.Stage;
+import javafx.scene.layout.StackPane;
 
-public class PanelControlador implements Initializable {
+import java.io.IOException;
 
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
+public class PanelControlador {
 
     @FXML
     private ImageView Image;
 
     @FXML
-    private Tab botonCrearCita;
-
-    @FXML
-    private Tab botonCrearPaciente;
-
-    @FXML
-    private Tab botonListarCita;
-
-    @FXML
-    private Tab botonListarpaciente;
-
-    @FXML
     private Label textPanelClinica;
 
     @FXML
-    private TabPane tabPane;
+    private StackPane panelContenido;
 
     @FXML
-    void initialize() {
-        configuracionVentanas();
-
+    public void mostrarCrearPaciente() {
+        cargarVista("/co/edu/uniquindio/clinica/crearPaciente.fxml");
     }
 
-    private void configuracionVentanas() {
-        tabPane.getSelectionModel().selectedItemProperty().addListener((obs, oldTab, newTab) -> {
-            if (newTab == botonCrearPaciente) {
-                cargarContenido("/co/edu/uniquindio/clinica/crearPaciente.fxml", botonCrearPaciente);
-            } else if (newTab == botonListarpaciente) {
-                cargarContenido("/co/edu/uniquindio/clinica/listaPacientes.fxml", botonListarpaciente);
-            } else if (newTab == botonCrearCita) {
-                cargarContenido("/co/edu/uniquindio/clinica/crearCita.fxml", botonCrearCita);
-            } else if (newTab == botonListarCita) {
-                cargarContenido("/co/edu/uniquindio/clinica/listarCita.fxml", botonListarCita);
-            }
-        });
+    @FXML
+    public void mostrarListarPacientes() {
+        cargarVista("/co/edu/uniquindio/clinica/listaPacientes.fxml");
     }
 
-    private void cargarContenido(String rutaFXML, Tab tab) {
+    @FXML
+    public void mostrarCrearCita() {
+        cargarVista("/co/edu/uniquindio/clinica/crearCita.fxml");
+    }
+
+    @FXML
+    public void mostrarListarCitas() {
+        cargarVista("/co/edu/uniquindio/clinica/listarCita.fxml");
+    }
+
+    private void cargarVista(String ruta) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(rutaFXML));
-            Parent root = loader.load();
-            tab.setContent(root);
-
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(ruta));
+            Parent vista = loader.load();
+            panelContenido.getChildren().setAll(vista);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        configuracionVentanas();
-    }
 }
-
-
-

@@ -1,34 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 
-<VBox spacing="30.0" style="-fx-padding: 30px; -fx-background-color: #fae5d3;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.clinica.controladores.PanelControlador">
+<BorderPane xmlns="http://javafx.com/javafx/23.0.1"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="co.edu.uniquindio.clinica.controladores.PanelControlador">
 
-    <HBox alignment="CENTER" spacing="10.0">
-        <ImageView fx:id="Image" fitWidth="50.0" preserveRatio="true">
-            <image>
-                <Image url="@../../../../Img/medicamento.png" />
-            </image>
-        </ImageView>
-        <Label fx:id="textPanelClinica" text="Panel de la clínica">
-            <font>
-                <Font size="20.0" />
-            </font>
-        </Label>
-    </HBox>
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="10.0" style="-fx-padding: 15; -fx-background-color: #fae5d3;">
+            <ImageView fx:id="Image" fitWidth="50.0" preserveRatio="true">
+                <image>
+                    <Image url="@../../../../Img/medicamento.png" />
+                </image>
+            </ImageView>
+            <Label fx:id="textPanelClinica" text="Panel de la clínica">
+                <font>
+                    <Font size="20.0"/>
+                </font>
+            </Label>
+        </HBox>
+    </top>
 
-    <TabPane fx:id="tabPane" VBox.vgrow="ALWAYS">
-        <Tab fx:id="botonCrearPaciente" closable="false" style="-fx-background-color: #d5dbdb;" text="Crear paciente" />
-        <Tab fx:id="botonListarpaciente" closable="false" style="-fx-background-color: #d5dbdb;" text="Listar pacientes" />
-        <Tab fx:id="botonCrearCita" closable="false" style="-fx-background-color: #d5dbdb;" text="Crear cita" />
-        <Tab fx:id="botonListarCita" closable="false" style="-fx-background-color: #d5dbdb;" text="Listar citas" />
-    </TabPane>
+    <left>
+        <VBox spacing="15.0" style="-fx-padding: 20;">
+            <Button text="Crear paciente" onAction="#mostrarCrearPaciente"/>
+            <Button text="Listar pacientes" onAction="#mostrarListarPacientes"/>
+            <Button text="Crear cita" onAction="#mostrarCrearCita"/>
+            <Button text="Listar citas" onAction="#mostrarListarCitas"/>
+        </VBox>
+    </left>
 
-</VBox>
+    <center>
+        <StackPane fx:id="panelContenido" style="-fx-background-color: white; -fx-padding: 15;"/>
+    </center>
+</BorderPane>
