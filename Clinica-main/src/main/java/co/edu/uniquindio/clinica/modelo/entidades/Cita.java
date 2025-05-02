@@ -4,11 +4,14 @@ import co.edu.uniquindio.clinica.modelo.enumer.EstadoCita;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
+
 import java.time.LocalDateTime;
 
 @Getter
 @Setter
 @Builder
+@ToString
 public class Cita {
     private String id;
     private LocalDateTime fecha;

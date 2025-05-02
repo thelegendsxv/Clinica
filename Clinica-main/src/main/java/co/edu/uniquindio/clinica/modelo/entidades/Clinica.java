@@ -4,6 +4,7 @@ import co.edu.uniquindio.clinica.modelo.enumer.EstadoCita;
 import co.edu.uniquindio.clinica.factory.Suscripcion;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.time.LocalDateTime;
 import java.util.LinkedList;
@@ -12,6 +13,7 @@ import java.util.UUID;
 
 @Getter
 @Setter
+@ToString
 public class Clinica {
     private List<Paciente> pacientes;
     private List<Cita> citas;

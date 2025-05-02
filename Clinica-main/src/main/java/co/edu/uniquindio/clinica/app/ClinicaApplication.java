@@ -25,29 +25,34 @@ public class ClinicaApplication extends Application {
             Suscripcion suscripcionPremium = suscripcionFactory2.crearSuscripcion();
             Suscripcion suscripcionBasica = suscripcionFactory.crearSuscripcion();
 
-            // Agregar pacientes
-            clinica.agregarPaciente("123", "Santiago Torres", "3216549870", "santiago@mail.com", suscripcionPremium);
-            clinica.agregarPaciente("124", "Daiana Ramirez", "3216549871", "daiana@mail.com", suscripcionBasica); // ahora con suscripción básica
+            clinica.agregarPaciente("123", "Santiago Torres", "3216549870", "santiago.rodriguezt@uqvirtual.edu.co", suscripcionPremium);
+            clinica.agregarPaciente("124", "Daiana Ramirez", "911694991", "santiago.rodriguezt@uqvirtual.edu.co", suscripcionBasica);
 
-            // Agregar servicios
             clinica.agregarServicio("Consulta General", 80000);
             clinica.agregarServicio("Odontología", 120000);
             clinica.agregarServicio("Terapia Física", 100000);
 
-            // Obtener paciente y servicio para agendar cita
-            Paciente paciente = clinica.getPacientes().get(0); // Santiago con premium
-            Servicio servicio = clinica.getServicios().get(0); // Consulta General
 
-            // Agendar cita
-            LocalDateTime fechaCita = LocalDateTime.now().plusDays(2).withHour(10).withMinute(30);
-            clinica.agendarCita(paciente, servicio, fechaCita);
+            Paciente pacienteSanti = clinica.getPacientes().get(0);
+            Servicio servicioGeneral = clinica.getServicios().get(0);
+            LocalDateTime fechaCitaSanti = LocalDateTime.now().plusDays(2).withHour(10).withMinute(30);
+            clinica.agendarCita(pacienteSanti, servicioGeneral, fechaCitaSanti);
+
+
+            Paciente pacienteDaiana = clinica.getPacientes().get(1);
+            LocalDateTime fechaCitaDaiana = LocalDateTime.now().plusDays(3).withHour(9).withMinute(0);
+            clinica.agendarCita(pacienteDaiana, servicioGeneral, fechaCitaDaiana);
+
+            System.out.println(clinica.getPacientes());
+            System.out.println(clinica.getServicios());
 
         } catch (Exception e) {
             System.err.println("Error: " + e.getMessage());
         }
     }
-    public void start(Stage stage) throws Exception {
 
+    public void start(Stage stage) throws Exception {
+        datos();
         FXMLLoader loader = new FXMLLoader(ClinicaApplication.class.getResource("/co/edu/uniquindio/clinica/panel.fxml"));
         Parent parent = loader.load();
 
