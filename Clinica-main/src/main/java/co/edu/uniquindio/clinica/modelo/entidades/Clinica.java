@@ -50,30 +50,30 @@ public class Clinica {
 
     public void validarDatos(String id, String nombre, String telefono, String correo, Suscripcion suscripcion)throws Exception {
 
-            if (id == null || id.trim().isEmpty()) {
-                throw new IllegalArgumentException("El ID no puede estar vacío.");
-            }
-            if (nombre == null || nombre.trim().isEmpty()) {
-                throw new IllegalArgumentException("El nombre no puede estar vacío.");
-            }
-            if (telefono == null || !telefono.matches("\\d{7,10}")) { // entre 7 y 10 dígitos
-                throw new IllegalArgumentException("El teléfono debe tener solo números y entre 7 y 10 dígitos.");
-            }
-            if (correo == null || !correo.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$")) {
-                throw new IllegalArgumentException("El correo no tiene un formato válido.");
-            }
-            if (suscripcion == null) {
-                throw new IllegalArgumentException("La suscripción debe ser 'Basica' o 'Premium'.");
-            }
+        if (id == null || id.trim().isEmpty()) {
+            throw new IllegalArgumentException("El ID no puede estar vacío.");
         }
+        if (nombre == null || nombre.trim().isEmpty()) {
+            throw new IllegalArgumentException("El nombre no puede estar vacío.");
+        }
+        if (telefono == null || !telefono.matches("\\d{7,10}")) { // entre 7 y 10 dígitos
+            throw new IllegalArgumentException("El teléfono debe tener solo números y entre 7 y 10 dígitos.");
+        }
+        if (correo == null || !correo.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$")) {
+            throw new IllegalArgumentException("El correo no tiene un formato válido.");
+        }
+        if (suscripcion == null) {
+            throw new IllegalArgumentException("La suscripción debe ser 'Basica' o 'Premium'.");
+        }
+    }
 
-        public void validarUsuario(String id) throws Exception {
-         for (Paciente paciente : pacientes){
-             if (paciente.getId().equals(id)){
-                 throw new Exception("El usuario ya existe.");
-             }
-         }
+    public void validarUsuario(String id) throws Exception {
+        for (Paciente paciente : pacientes){
+            if (paciente.getId().equals(id)){
+                throw new Exception("El usuario ya existe.");
+            }
         }
+    }
 
     public void agregarServicio(String nombre, double precio) throws Exception {
         validarServicio(nombre);
@@ -176,4 +176,3 @@ public class Clinica {
 
 
 }
-

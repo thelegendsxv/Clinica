@@ -14,7 +14,7 @@ EnvioEmail {
 
 
         Email email = EmailBuilder.startingBlank()
-                .from("proyectofinalprogramacion053@gmail.com")
+                .from("SU_EMA")
                 .to(destinatario)
                 .withSubject(asunto)
                 .withPlainText(mensaje)
@@ -22,7 +22,7 @@ EnvioEmail {
 
 
         try (Mailer mailer = MailerBuilder
-                .withSMTPServer("smtp.gmail.com", 587, "proyectofinal", "Proyectofinal2.")
+                .withSMTPServer("smtp.gmail.com", 587, "proyectofinalprogramacion053@gmail.com", "Proyectofinal2.")
                 .withTransportStrategy(TransportStrategy.SMTP_TLS)
                 .withDebugLogging(true)
                 .buildMailer()) {
