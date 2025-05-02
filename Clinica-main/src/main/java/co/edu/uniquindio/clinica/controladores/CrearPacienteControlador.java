@@ -71,9 +71,9 @@ public class CrearPacienteControlador {
             Clinica clinica = ClinicaSingleton.getInstancia();
             Paciente paciente = clinica.agregarPaciente(id, nombre, telefono, correo, suscripcion);
 
-            // Agregar el paciente al controlador de lista
+
             if (listaPacientesControlador != null) {
-                listaPacientesControlador.agregarPaciente(paciente); // Actualizar la tabla
+
             }
 
             // Limpiar campos luego de agregar el paciente
