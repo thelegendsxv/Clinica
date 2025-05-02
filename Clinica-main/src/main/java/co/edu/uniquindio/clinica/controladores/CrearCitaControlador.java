@@ -1,5 +1,6 @@
 package co.edu.uniquindio.clinica.controladores;
 
+import co.edu.uniquindio.clinica.modelo.entidades.Cita;
 import co.edu.uniquindio.clinica.modelo.entidades.Clinica;
 import co.edu.uniquindio.clinica.modelo.entidades.Paciente;
 import co.edu.uniquindio.clinica.modelo.entidades.Servicio;
@@ -58,6 +59,21 @@ public class CrearCitaControlador {
 
         LocalTime hora = LocalTime.parse(horaTexto);
         LocalDateTime fechaHora = LocalDateTime.of(fecha, hora);
+
+        // Validar que el paciente no tenga otra cita a la misma hora
+        for (Cita citaExistente : clinica.getCitas()) {
+            if (citaExistente.getPaciente().equals(paciente) &&
+                    citaExistente.getFecha().equals(fechaHora)) {
+                mostrarAlerta("Este paciente ya tiene una cita programada a esa hora.");
+                return;
+            }
+
+            if (citaExistente.getServicio().equals(servicio) &&
+                    citaExistente.getFecha().equals(fechaHora)) {
+                mostrarAlerta("Ya hay una cita registrada para este servicio a esa hora.");
+                return;
+            }
+        }
 
         try {
             clinica.agendarCita(paciente, servicio, fechaHora);
