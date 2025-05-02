@@ -7,12 +7,9 @@ import co.edu.uniquindio.clinica.factory.SuscripcionPremiumFactory;
 import co.edu.uniquindio.clinica.modelo.entidades.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-
-import java.net.URL;
-import java.time.LocalDateTime;
-import java.util.ResourceBundle;
 
 public class CrearPacienteControlador {
 
@@ -33,7 +30,6 @@ public class CrearPacienteControlador {
     @FXML
     private TextField telefonoTextField;
 
-    // Método setter para recibir la referencia del controlador de ListaPacientes
     public void setListaPacientesControlador(ListaPacientesControlador controlador) {
         this.listaPacientesControlador = controlador;
     }
@@ -41,52 +37,65 @@ public class CrearPacienteControlador {
     @FXML
     void crearPaciente(ActionEvent event) {
         try {
-            // Obtener datos del formulario
             String id = idTextField.getText();
             String nombre = nombreTextField.getText();
             String telefono = telefonoTextField.getText();
             String correo = correoTextField.getText();
             String tipo = tipoSuscripcion.getValue();
 
-            // Validación de campos vacíos
+            // Validaciones
             if (id.isEmpty() || nombre.isEmpty() || telefono.isEmpty() || correo.isEmpty() || tipo == null) {
-                throw new IllegalArgumentException("Todos los campos deben estar llenos");
+                mostrarAlerta("Campos incompletos", "Todos los campos deben estar llenos.");
+                return;
             }
 
-            // Usar las fábricas según el tipo de suscripción
-            SuscripcionFactory suscripcionFactory;
-
-            if (tipo.equals("Básica")) {
-                suscripcionFactory = new SuscripcionBasicaFactory();
-            } else if (tipo.equals("Premium")) {
-                suscripcionFactory = new SuscripcionPremiumFactory();
-            } else {
-                throw new IllegalArgumentException("Tipo de suscripción no válido");
+            if (!telefono.matches("\\d+")) {
+                mostrarAlerta("Teléfono inválido", "El teléfono solo debe contener números.");
+                return;
             }
 
-            // Crear la suscripción mediante la fábrica
+            if (!correo.contains("@") || !correo.contains(".")) {
+                mostrarAlerta("Correo inválido", "El correo debe contener un '@' y un dominio.");
+                return;
+            }
+
+            // Crear suscripción
+            SuscripcionFactory suscripcionFactory = tipo.equals("Básica") ?
+                    new SuscripcionBasicaFactory() : new SuscripcionPremiumFactory();
+
             Suscripcion suscripcion = suscripcionFactory.crearSuscripcion();
 
             // Crear paciente
             Clinica clinica = ClinicaSingleton.getInstancia();
-            Paciente paciente = clinica.agregarPaciente(id, nombre, telefono, correo, suscripcion);
-
+            clinica.agregarPaciente(id, nombre, telefono, correo, suscripcion);
 
             if (listaPacientesControlador != null) {
-
+                listaPacientesControlador.actualizarTabla(); // <- Corrección clave
             }
 
-            // Limpiar campos luego de agregar el paciente
-            idTextField.clear();
-            nombreTextField.clear();
-            telefonoTextField.clear();
-            correoTextField.clear();
-            tipoSuscripcion.setValue(null);
+            limpiarCampos();
+            mostrarAlerta("Éxito", "Paciente creado correctamente.");
 
         } catch (Exception e) {
             e.printStackTrace();
-            // Aquí puedes mostrar un Alert dialog en lugar de solo imprimir
+            mostrarAlerta("Error", "No se pudo crear el paciente: " + e.getMessage());
         }
+    }
+
+    private void limpiarCampos() {
+        idTextField.clear();
+        nombreTextField.clear();
+        telefonoTextField.clear();
+        correoTextField.clear();
+        tipoSuscripcion.setValue(null);
+    }
+
+    private void mostrarAlerta(String titulo, String mensaje) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(titulo);
+        alert.setHeaderText(null);
+        alert.setContentText(mensaje);
+        alert.showAndWait();
     }
 
     @FXML

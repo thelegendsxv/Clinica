@@ -1,20 +1,12 @@
 package co.edu.uniquindio.clinica.controladores;
 
-import co.edu.uniquindio.clinica.factory.Suscripcion;
-import co.edu.uniquindio.clinica.factory.SuscripcionBasica;
-import co.edu.uniquindio.clinica.factory.SuscripcionPremium;
 import co.edu.uniquindio.clinica.modelo.entidades.Paciente;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.ListCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-
-import java.util.stream.Collectors;
 
 public class ListaPacientesControlador {
 
@@ -44,22 +36,15 @@ public class ListaPacientesControlador {
         actualizarTabla();
     }
 
-    /**
-     * Configura las columnas de la tabla para mostrar propiedades del objeto Paciente.
-     */
     public void configurarColumnas() {
         idCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getId()));
         nombreCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNombre()));
         telefonoCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getTelefono()));
         correoCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCorreo()));
-        suscripcionCol.setCellValueFactory(cellData -> new SimpleStringProperty(
-                cellData.getValue().getSuscripcion().getTipo()
-        ));
+        suscripcionCol.setCellValueFactory(cellData ->
+                new SimpleStringProperty(cellData.getValue().getSuscripcion().getTipo()));
     }
 
-    /**
-     * Obtiene la lista actual de pacientes desde la clínica y actualiza la tabla.
-     */
     public void actualizarTabla() {
         pacientes.setAll(ControladorPrincipal.getInstancia().getClinica().getPacientes());
         tablaPacientes.setItems(pacientes);
