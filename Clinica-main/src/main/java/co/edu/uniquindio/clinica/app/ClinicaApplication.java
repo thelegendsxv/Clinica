@@ -60,7 +60,8 @@ public class ClinicaApplication extends Application {
         stage.getIcons().add(new Image(Objects.requireNonNull(ClinicaApplication.class.getResourceAsStream("/Img/medicamento.png"))));
         stage.setScene(scene);
         stage.setTitle("Clinica");
-        stage.setResizable(true);
+        stage.setWidth(800);
+        stage.setHeight(600);
         stage.show();
     }
 }
