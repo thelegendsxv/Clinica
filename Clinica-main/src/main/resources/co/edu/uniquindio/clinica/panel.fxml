@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
@@ -9,26 +14,37 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox spacing="30.0" style="-fx-padding: 30px; -fx-background-color: #fae5d3;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.clinica.controladores.PanelControlador">
-
-    <HBox alignment="CENTER" spacing="10.0">
-        <ImageView fx:id="Image" fitWidth="50.0" preserveRatio="true">
-            <image>
-                <Image url="@../../../../Img/medicamento.png" />
-            </image>
-        </ImageView>
-        <Label fx:id="textPanelClinica" text="Panel de la clínica">
-            <font>
-                <Font size="20.0" />
-            </font>
-        </Label>
-    </HBox>
-
-    <TabPane fx:id="tabPane" VBox.vgrow="ALWAYS">
-        <Tab fx:id="botonCrearPaciente" closable="false" style="-fx-background-color: #d5dbdb;" text="Crear paciente" />
-        <Tab fx:id="botonListarpaciente" closable="false" style="-fx-background-color: #d5dbdb;" text="Listar pacientes" />
-        <Tab fx:id="botonCrearCita" closable="false" style="-fx-background-color: #d5dbdb;" text="Crear cita" />
-        <Tab fx:id="botonListarCita" closable="false" style="-fx-background-color: #d5dbdb;" text="Listar citas" />
-    </TabPane>
+<VBox prefHeight="313.0" prefWidth="536.0" spacing="30.0" style="-fx-padding: 30px; -fx-background-color: #fae5d3;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.clinica.controladores.PanelControlador">
+   <children>
+   
+       <HBox alignment="CENTER" spacing="10.0">
+      <children>
+              <ImageView fx:id="Image" fitWidth="50.0" preserveRatio="true">
+                  <image>
+                      <Image url="@../../../../Img/medicamento.png" />
+                  </image>
+              </ImageView>
+              <Label fx:id="textPanelClinica" text="Panel de la clínica">
+                  <font>
+                      <Font size="20.0" />
+                  </font>
+              </Label>
+      </children>
+       </HBox>
+   
+       <TabPane fx:id="tabPane" VBox.vgrow="ALWAYS">
+      <tabs>
+              <Tab fx:id="botonCrearPaciente" closable="false" style="-fx-background-color: #d5dbdb;" text="Crear paciente" />
+              <Tab fx:id="botonListarpaciente" closable="false" style="-fx-background-color: #d5dbdb;" text="Listar pacientes" />
+              <Tab fx:id="botonCrearCita" closable="false" style="-fx-background-color: #d5dbdb;" text="Crear cita" />
+              <Tab fx:id="botonListarCita" closable="false" style="-fx-background-color: #d5dbdb;" text="Listar citas" />
+            <Tab text="Servicio">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
+      </tabs>
+       </TabPane>
+   </children>
 
 </VBox>

@@ -78,6 +78,7 @@ public class CrearCitaControlador {
         assert TextPaciente != null : "fx:id=\"TextPaciente\" was not injected: check your FXML file 'crearCita.fxml'.";
         assert TextServicio != null : "fx:id=\"TextServicio\" was not injected: check your FXML file 'crearCita.fxml'.";
 
+
     }
 
 }

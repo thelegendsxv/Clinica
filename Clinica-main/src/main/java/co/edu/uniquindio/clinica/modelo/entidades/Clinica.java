@@ -2,6 +2,8 @@ package co.edu.uniquindio.clinica.modelo.entidades;
 
 import co.edu.uniquindio.clinica.modelo.enumer.EstadoCita;
 import co.edu.uniquindio.clinica.factory.Suscripcion;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,17 +15,20 @@ import java.util.UUID;
 @Getter
 @Setter
 public class Clinica {
-    private List<Paciente> pacientes;
+    private ObservableList<Paciente> pacientes;
     private List<Cita> citas;
     private List<Servicio> servicios;
 
-    public Clinica (){
-        this.pacientes = new LinkedList<>();
+    public Clinica() {
+        this.pacientes = FXCollections.observableArrayList();
         this.citas = new LinkedList<>();
         this.servicios = new LinkedList<>();
     }
+    public ObservableList<Paciente> getPacientes() {
+        return pacientes;
+    }
 
-    public void agregarPaciente(String id, String nombre, String telefono, String correo, Suscripcion suscripcion) throws Exception {
+    public Paciente agregarPaciente(String id, String nombre, String telefono, String correo, Suscripcion suscripcion) throws Exception {
         validarDatos(id, nombre, telefono, correo, suscripcion);
         validarUsuario(id);
 
@@ -38,6 +43,7 @@ public class Clinica {
         pacientes.add(paciente);
         System.out.println("Paciente agregado");
 
+        return paciente;
     }
 
     public void validarDatos(String id, String nombre, String telefono, String correo, Suscripcion suscripcion)throws Exception {
