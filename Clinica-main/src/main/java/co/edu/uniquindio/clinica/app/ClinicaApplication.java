@@ -29,7 +29,7 @@ public class ClinicaApplication extends Application {
 
 
             controladorPrincipal.getClinica().registrarPaciente("123", "Santiago Torres", "3216549870", "santiago.rodriguezt@uqvirtual.edu.co", TipoSuscripcion.BASICA);
-            controladorPrincipal.getClinica().registrarPaciente("124", "Daiana Ramirez", "911694991", "santiago.rodriguezt@uqvirtual.edu.co", TipoSuscripcion.PREMIUM);
+            controladorPrincipal.getClinica().registrarPaciente("124", "Daiana Ramirez", "911694991", "amore@gmail.com", TipoSuscripcion.PREMIUM);
 
 
 
