@@ -18,15 +18,20 @@ public class CitaRepositorio {
     }
 
     public void agregarCita(Cita cita) {
+        if (cita == null) {
+            throw new IllegalArgumentException("La cita no puede ser nula");
+        }
         this.citas.add(cita);
     }
 
+    public List<Cita> getCitas() {
+        return new ArrayList<>(citas); // Retorna copia para evitar modificaciones externas
+    }
+
     public Cita buscarCitaPorId(String id) {
-        for (Cita cita : citas) {
-            if (cita.getId().equals(id)) {
-                return cita;
-            }
-        }
-        return null;
+        return citas.stream()
+                .filter(c -> c.getId().equals(id))
+                .findFirst()
+                .orElse(null);
     }
 }

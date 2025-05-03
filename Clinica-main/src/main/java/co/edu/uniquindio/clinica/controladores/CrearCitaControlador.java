@@ -3,6 +3,7 @@ package co.edu.uniquindio.clinica.controladores;
 import co.edu.uniquindio.clinica.modelo.entidades.Cita;
 import co.edu.uniquindio.clinica.modelo.entidades.Paciente;
 import co.edu.uniquindio.clinica.modelo.entidades.Servicio;
+import co.edu.uniquindio.clinica.modelo.enumer.EstadoCita;
 import co.edu.uniquindio.clinica.servicios.ClinicaServicio;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
@@ -16,20 +17,11 @@ import java.time.LocalTime;
 
 public class CrearCitaControlador {
 
-    @FXML
-    private ComboBox<Paciente> SeleccionePaciente;
-
-    @FXML
-    private ComboBox<Servicio> SeleccioneServicio;
-
-    @FXML
-    private DatePicker SeleccioneFecha;
-
-    @FXML
-    private ComboBox<String> SeleccioneHora;
-
-    @FXML
-    private TextField IngreseNotas;
+    @FXML private ComboBox<Paciente> SeleccionePaciente;
+    @FXML private ComboBox<Servicio> SeleccioneServicio;
+    @FXML private DatePicker SeleccioneFecha;
+    @FXML private ComboBox<String> SeleccioneHora;
+    @FXML private TextField IngreseNotas;
 
     private final ClinicaServicio clinica = ControladorPrincipal.getInstancia().getClinica();
 
@@ -47,43 +39,49 @@ public class CrearCitaControlador {
 
     @FXML
     public void crearCita() {
-        Paciente paciente = SeleccionePaciente.getValue();
-        Servicio servicio = SeleccioneServicio.getValue();
-        LocalDate fecha = SeleccioneFecha.getValue();
-        String horaTexto = SeleccioneHora.getValue();
-
-
-        LocalTime hora = LocalTime.parse(horaTexto);
-        LocalDateTime fechaHora = LocalDateTime.of(fecha, hora);
-
-        // Validar que el paciente no tenga otra cita a la misma hora
-        for (Cita citaExistente : clinica.getCitaServicio().getCitaRepositorio().getCitas()) {
-            if (citaExistente.getPaciente().equals(paciente) &&
-                    citaExistente.getFecha().equals(fechaHora)) {
-                mostrarAlerta("Este paciente ya tiene una cita programada a esa hora.");
-                return;
-            }
-
-            if (citaExistente.getServicio().equals(servicio) &&
-                    citaExistente.getFecha().equals(fechaHora)) {
-                mostrarAlerta("Ya hay una cita registrada para este servicio a esa hora.");
-                return;
-            }
-        }
-
         try {
-            clinica.agendarCita(paciente, servicio, fechaHora);
-            mostrarAlerta("Cita creada exitosamente.");
-            limpiarCampos();
-        } catch (Exception e) {
-            mostrarAlerta("Error al crear la cita: " + e.getMessage());
-        }
-    }
+            // Validar campos
+            if (SeleccionePaciente.getValue() == null || SeleccioneServicio.getValue() == null ||
+                    SeleccioneFecha.getValue() == null || SeleccioneHora.getValue() == null) {
+                mostrarAlerta("Debe completar todos los campos");
+                return;
+            }
 
-    public void validarDatos(Paciente paciente, Servicio servicio, LocalDate fecha, LocalTime horaTexto) {
-        if (paciente == null || servicio == null || fecha == null || horaTexto == null) {
-            mostrarAlerta("Debe completar todos los campos.");
-            return;
+            Paciente paciente = SeleccionePaciente.getValue();
+            Servicio servicio = SeleccioneServicio.getValue();
+            LocalDate fecha = SeleccioneFecha.getValue();
+            String horaTexto = SeleccioneHora.getValue();
+            String notas = IngreseNotas.getText();
+            LocalTime hora = LocalTime.parse(horaTexto);
+            LocalDateTime fechaHora = LocalDateTime.of(fecha, hora);
+
+            // Verificar disponibilidad
+            for (Cita citaExistente : clinica.getCitaServicio().getCitaRepositorio().getCitas()) {
+                if (citaExistente.getPaciente().equals(paciente) && citaExistente.getFecha().equals(fechaHora)) {
+                    mostrarAlerta("El paciente ya tiene cita a esta hora");
+                    return;
+                }
+                if (citaExistente.getServicio().equals(servicio) && citaExistente.getFecha().equals(fechaHora)) {
+                    mostrarAlerta("El servicio ya está reservado a esta hora");
+                    return;
+                }
+            }
+
+            // Crear y guardar cita
+            Cita nuevaCita = Cita.builder()
+                    .paciente(paciente)
+                    .servicio(servicio)
+                    .fecha(fechaHora)
+                    .estado(EstadoCita.AGENDADA)
+                    .notas(notas)
+                    .build();
+
+            clinica.getCitaServicio().getCitaRepositorio().agregarCita(nuevaCita);
+            mostrarAlerta("Cita creada exitosamente");
+            limpiarCampos();
+
+        } catch (Exception e) {
+            mostrarAlerta("Error: " + e.getMessage());
         }
     }
 
