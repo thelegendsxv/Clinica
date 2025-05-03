@@ -18,6 +18,7 @@ import javafx.stage.Stage;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
+//App
 public class ClinicaApplication extends Application {
     public void datos() {
         ControladorPrincipal controladorPrincipal = ControladorPrincipal.getInstancia();
@@ -53,7 +54,6 @@ public class ClinicaApplication extends Application {
 
             System.out.println(controladorPrincipal.getClinica().getPacienteServicio().getPacienteRepositorio().getPacientes().get(1));
             System.out.println(controladorPrincipal.getClinica().getServicios());
-
 
 
         } catch (Exception e) {
