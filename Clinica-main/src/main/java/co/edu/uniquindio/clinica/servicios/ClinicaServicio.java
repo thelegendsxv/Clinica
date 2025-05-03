@@ -29,7 +29,28 @@ public class ClinicaServicio implements IClinicaServicio {
         pacienteServicio = new PacienteServicio();
     }
 
-    private final List<Servicio> servicios = new LinkedList<>();
+    private final List<Servicio> servicios = List.of(
+            new Servicio("Consulta General", 80000, "S001"),
+            new Servicio("Odontología", 120000, "S002"),
+            new Servicio("Terapia Física", 100000, "S003"),
+            new Servicio("Laboratorio Clínico", 70000, "S004"),
+            new Servicio("Radiografía", 95000, "S005"),
+            new Servicio("Ecografía", 110000, "S006"),
+            new Servicio("Consulta Pediátrica", 85000, "S007"),
+            new Servicio("Psicología", 90000, "S008"),
+            new Servicio("Nutrición", 75000, "S009"),
+            new Servicio("Cardiología", 130000, "S010"),
+            new Servicio("Dermatología", 115000, "S011"),
+            new Servicio("Ginecología", 125000, "S012"),
+            new Servicio("Oftalmología", 95000, "S013"),
+            new Servicio("Vacunación", 60000, "S014"),
+            new Servicio("Chequeo Médico General", 90000, "S015"),
+            new Servicio("Medicina Interna", 140000, "S016"),
+            new Servicio("Neumología", 135000, "S017"),
+            new Servicio("Neurología", 145000, "S018"),
+            new Servicio("Urología", 130000, "S019"),
+            new Servicio("Endocrinología", 128000, "S020")
+    );
 
 
     public void registrarPaciente(String id, String nombre, String telefono, String correo, TipoSuscripcion tipo) throws Exception {
@@ -54,7 +75,7 @@ public class ClinicaServicio implements IClinicaServicio {
     }
 
     @Override
-    public void registrarServicio(String nombre, double precio) throws Exception {
+    public void registrarServicio(String nombre, double precio, String id) throws Exception {
         if (buscarServicioPorNombre(nombre) != null) {
             throw new Exception("El servicio ya existe.");
         }
@@ -63,10 +84,7 @@ public class ClinicaServicio implements IClinicaServicio {
             throw new IllegalArgumentException("El nombre del servicio no puede estar vacío.");
         }
 
-        Servicio servicio = Servicio.builder()
-                .nombre(nombre)
-                .precio(precio)
-                .build();
+        Servicio servicio = new Servicio(nombre, precio, id);
 
         servicios.add(servicio);
     }
