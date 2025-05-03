@@ -16,12 +16,19 @@ import java.util.ArrayList;  // Importar ArrayList para inicializar la lista
 @ToString
 
 public class SuscripcionBasica implements Suscripcion {
-    private List<ServicioSuscripcion> serviciosDisponibles;
 
-    // Constructor que inicializa la lista de servicios
-    public SuscripcionBasica() {
-        serviciosDisponibles = new ArrayList<>();
-    }
+    private final List<ServicioSuscripcion> serviciosDisponibles = List.of(
+            new ServicioSuscripcion(new Servicio("Consulta General", 80000, "S001"), TipoDescuento.INCOMPLETO, TipoSuscripcion.BASICA),
+            new ServicioSuscripcion(new Servicio("Laboratorio Clínico", 70000, "S004"), TipoDescuento.INCOMPLETO, TipoSuscripcion.BASICA),
+            new ServicioSuscripcion(new Servicio("Radiografía", 95000, "S005"), TipoDescuento.INCOMPLETO, TipoSuscripcion.BASICA),
+            new ServicioSuscripcion(new Servicio("Nutrición", 75000, "S009"), TipoDescuento.INCOMPLETO, TipoSuscripcion.BASICA),
+            new ServicioSuscripcion(new Servicio("Dermatología", 115000, "S011"), TipoDescuento.COMPLETO, TipoSuscripcion.BASICA),
+            new ServicioSuscripcion(new Servicio("Vacunación", 60000, "S013"), TipoDescuento.INCOMPLETO, TipoSuscripcion.BASICA),
+            new ServicioSuscripcion(new Servicio("Chequeo Médico General", 90000, "S014"), TipoDescuento.INCOMPLETO, TipoSuscripcion.BASICA),
+            new ServicioSuscripcion(new Servicio("Consulta Pediátrica", 85000, "S007"), TipoDescuento.COMPLETO, TipoSuscripcion.BASICA),
+            new ServicioSuscripcion(new Servicio("Oftalmología", 95000, "S015"), TipoDescuento.INCOMPLETO, TipoSuscripcion.BASICA)
+    );
+
 
     @Override
     public List<ServicioSuscripcion> getServiciosDisponibles() {

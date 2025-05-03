@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 public interface IClinicaServicio {
     void registrarPaciente(String id, String nombre, String telefono, String correo, TipoSuscripcion tipoSuscripcion) throws Exception;
 
-    void registrarServicio(String nombre, double precio) throws Exception;
+    void registrarServicio(String nombre, double precio, String id) throws Exception;
 
     void agendarCita(Paciente paciente, Servicio servicio, LocalDateTime fecha, String nota) throws Exception;
 

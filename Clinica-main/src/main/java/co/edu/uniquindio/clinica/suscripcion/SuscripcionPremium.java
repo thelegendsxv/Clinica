@@ -16,7 +16,18 @@ import java.util.List;
 
 public class SuscripcionPremium implements Suscripcion {
 
-    private List<ServicioSuscripcion> serviciosDisponibles = new ArrayList<>();
+    private final List<ServicioSuscripcion> serviciosDisponibles = List.of(
+            new ServicioSuscripcion(new Servicio("Consulta General", 80000, "S001"), TipoDescuento.COMPLETO, TipoSuscripcion.PREMIUM),
+            new ServicioSuscripcion(new Servicio("Odontología", 120000, "S002"), TipoDescuento.INCOMPLETO, TipoSuscripcion.PREMIUM),
+            new ServicioSuscripcion(new Servicio("Terapia Física", 100000, "S003"), TipoDescuento.COMPLETO, TipoSuscripcion.PREMIUM),
+            new ServicioSuscripcion(new Servicio("Ecografía", 110000, "S006"), TipoDescuento.COMPLETO, TipoSuscripcion.PREMIUM),
+            new ServicioSuscripcion(new Servicio("Psicología", 90000, "S008"), TipoDescuento.COMPLETO, TipoSuscripcion.PREMIUM),
+            new ServicioSuscripcion(new Servicio("Cardiología", 130000, "S010"), TipoDescuento.INCOMPLETO, TipoSuscripcion.PREMIUM),
+            new ServicioSuscripcion(new Servicio("Ginecología", 125000, "S012"), TipoDescuento.COMPLETO, TipoSuscripcion.PREMIUM),
+            new ServicioSuscripcion(new Servicio("Medicina Interna", 140000, "S016"), TipoDescuento.COMPLETO, TipoSuscripcion.PREMIUM),
+            new ServicioSuscripcion(new Servicio("Neurología", 145000, "S018"), TipoDescuento.COMPLETO, TipoSuscripcion.PREMIUM),
+            new ServicioSuscripcion(new Servicio("Endocrinología", 128000, "S020"), TipoDescuento.COMPLETO, TipoSuscripcion.PREMIUM)
+    );
 
     @Override
     public List<ServicioSuscripcion> getServiciosDisponibles() {

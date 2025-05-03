@@ -32,24 +32,6 @@ public class ClinicaApplication extends Application {
             controladorPrincipal.getClinica().registrarPaciente("124", "Daiana Ramirez", "911694991", "santiago.rodriguezt@uqvirtual.edu.co", TipoSuscripcion.PREMIUM);
 
 
-            controladorPrincipal.getClinica().registrarServicio("Consulta General", 80000);
-            controladorPrincipal.getClinica().registrarServicio("Odontología", 120000);
-            controladorPrincipal.getClinica().registrarServicio("Terapia Física", 100000);
-
-
-            Paciente pacienteSanti = controladorPrincipal.getClinica().getPacienteServicio().getPacienteRepositorio().getPacientes().get(0);
-            Servicio servicioGeneral = controladorPrincipal.getClinica().getServicios().get(0);
-            LocalDateTime fechaCitaSanti = LocalDateTime.now().plusDays(2).withHour(10).withMinute(30);
-            controladorPrincipal.getClinica().agendarCita(pacienteSanti, servicioGeneral, fechaCitaSanti, "Recurde traer tapabocas");
-
-
-            Paciente pacienteDaiana = controladorPrincipal.getClinica().getPacienteServicio().getPacienteRepositorio().getPacientes().get(1);
-            LocalDateTime fechaCitaDaiana = LocalDateTime.now().plusDays(3).withHour(9).withMinute(0);
-            controladorPrincipal.getClinica().agendarCita(pacienteDaiana, servicioGeneral, fechaCitaDaiana, "No debe comer en 12 horas");
-
-            System.out.println(controladorPrincipal.getClinica().getPacienteServicio().getPacienteRepositorio().getPacientes().get(1));
-            System.out.println(controladorPrincipal.getClinica().getServicios());
-
 
         } catch (Exception e) {
             System.err.println("Error: " + e.getMessage());
