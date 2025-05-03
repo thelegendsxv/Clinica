@@ -4,12 +4,10 @@ import co.edu.uniquindio.clinica.factory.Suscripcion;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 @Builder
 @Setter
 @Getter
-@ToString
 public class Paciente {
     private String id;
     private String nombre;
@@ -17,4 +15,8 @@ public class Paciente {
     private String correo;
     private Suscripcion suscripcion;
 
+    @Override
+    public String toString() {
+        return id + " - " + nombre;
+    }
 }

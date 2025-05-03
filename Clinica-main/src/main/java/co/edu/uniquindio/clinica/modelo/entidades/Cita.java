@@ -16,4 +16,6 @@ public class Cita {
     private Paciente paciente;
     private Servicio servicio;
     private Factura factura;
+    private String notas;
+
 }

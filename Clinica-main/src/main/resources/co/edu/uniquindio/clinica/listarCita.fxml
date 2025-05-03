@@ -16,11 +16,12 @@
 
         <TableView fx:id="tablaCitas" style="-fx-background-color: #fae5d3;" VBox.vgrow="ALWAYS">
             <columns>
-                <TableColumn id="TablaId" fx:id="TablaId" style="-fx-background-color: #d5dbdb;" text="ID" />
+                <TableColumn fx:id="TablaId" style="-fx-background-color: #d5dbdb;" text="ID" />
                 <TableColumn fx:id="TablaPaciente" style="-fx-background-color: #d5dbdb;" text="Paciente" />
                 <TableColumn fx:id="TablaServicio" style="-fx-background-color: #d5dbdb;" text="Servicio" />
                 <TableColumn fx:id="TablaFecha" style="-fx-background-color: #d5dbdb;" text="Fecha" />
                 <TableColumn fx:id="TablaEstado" style="-fx-background-color: #d5dbdb;" text="Estado" />
+                <TableColumn fx:id="TablaNotas" style="-fx-background-color: #d5dbdb;" text="Notas" />
             </columns>
             <columnResizePolicy>
                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

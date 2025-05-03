@@ -1,7 +1,6 @@
 package co.edu.uniquindio.clinica.controladores;
 
 import co.edu.uniquindio.clinica.modelo.entidades.Cita;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -13,12 +12,6 @@ import javafx.scene.control.TableView;
 public class ListarCitaControlador {
 
     @FXML
-    private TableColumn<Cita, String> TablaEstado;
-
-    @FXML
-    private TableColumn<Cita, String> TablaFecha;
-
-    @FXML
     private TableColumn<Cita, String> TablaId;
 
     @FXML
@@ -26,6 +19,15 @@ public class ListarCitaControlador {
 
     @FXML
     private TableColumn<Cita, String> TablaServicio;
+
+    @FXML
+    private TableColumn<Cita, String> TablaFecha;
+
+    @FXML
+    private TableColumn<Cita, String> TablaEstado;
+
+    @FXML
+    private TableColumn<Cita, String> TablaNotas;
 
     @FXML
     private Label TextListaDeCitas;
@@ -42,11 +44,12 @@ public class ListarCitaControlador {
     }
 
     private void configurarColumnas() {
-        TablaId.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getId()));
+        TablaId.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getPaciente().getId()));
         TablaPaciente.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getPaciente().getNombre()));
         TablaServicio.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getServicio().getNombre()));
-        TablaFecha.setCellValueFactory(c -> new SimpleObjectProperty<>(c.getValue().getFecha().toString()));
+        TablaFecha.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getFecha().toString()));
         TablaEstado.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getEstado().toString()));
+        TablaNotas.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getNotas()));
     }
 
     private void actualizarTabla() {
