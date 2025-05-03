@@ -1,13 +1,13 @@
 package co.edu.uniquindio.clinica.controladores;
 
 import co.edu.uniquindio.clinica.modelo.entidades.Cita;
+import co.edu.uniquindio.clinica.modelo.enumer.EstadoCita;
+
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
+
 import java.time.format.DateTimeFormatter;
 
 public class ListarCitaControlador {
@@ -19,11 +19,22 @@ public class ListarCitaControlador {
     @FXML private TableColumn<Cita, String> TablaEstado;
     @FXML private TableColumn<Cita, String> TablaNotas;
     @FXML private TableView<Cita> tablaCitas;
+    @FXML private Button btnCancelar;
 
     @FXML
     void initialize() {
         configurarColumnas();
         cargarDatos();
+
+        // Deshabilitar el botón al inicio
+        btnCancelar.setDisable(true);
+
+        // Habilitar botón solo si hay una cita seleccionada
+        tablaCitas.getSelectionModel().selectedItemProperty().addListener((obs, oldSel, newSel) -> {
+            btnCancelar.setDisable(newSel == null);
+        });
+
+        btnCancelar.setOnAction(e -> cancelarCitaSeleccionada());
     }
 
     private void configurarColumnas() {
@@ -42,5 +53,14 @@ public class ListarCitaControlador {
                 ControladorPrincipal.getInstancia().getClinica()
                         .getCitaServicio().getCitaRepositorio().getCitas()
         ));
+    }
+
+    private void cancelarCitaSeleccionada() {
+        Cita cita = tablaCitas.getSelectionModel().getSelectedItem();
+        EstadoCita EstadoCita = null;
+        if (cita != null && cita.getEstado() != EstadoCita.CANCELADA) {
+            cita.setEstado(EstadoCita.CANCELADA);
+            tablaCitas.refresh();
+        }
     }
 }
