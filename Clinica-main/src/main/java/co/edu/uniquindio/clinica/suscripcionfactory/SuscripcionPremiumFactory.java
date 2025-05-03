@@ -1,6 +1,7 @@
 package co.edu.uniquindio.clinica.suscripcionfactory;
 
 import co.edu.uniquindio.clinica.suscripcion.Suscripcion;
+import co.edu.uniquindio.clinica.suscripcion.SuscripcionPremium;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;

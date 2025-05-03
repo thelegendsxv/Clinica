@@ -3,6 +3,7 @@ package co.edu.uniquindio.clinica.suscripcion;
 import co.edu.uniquindio.clinica.modelo.entidades.Factura;
 import co.edu.uniquindio.clinica.modelo.entidades.Servicio;
 import co.edu.uniquindio.clinica.modelo.enumer.TipoDescuento;
+import co.edu.uniquindio.clinica.modelo.enumer.TipoSuscripcion;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -59,14 +60,10 @@ public class SuscripcionBasica implements Suscripcion {
             precioFinal = servicio.getPrecio();
         }else{
             if (servicioSuscripcionBuscado.getTipoDescuento() == TipoDescuento.COMPLETO) {
-                // Descuento completo: servicio gratuito
-                System.out.println("Descuento Completo: El servicio es gratuito.");
                 precioFinal = 0;
             }
             else if (servicioSuscripcionBuscado.getTipoDescuento()  == TipoDescuento.INCOMPLETO) {
-                // Descuento incompleto: un porcentaje de descuento, por ejemplo, 50%
-                System.out.println("Descuento Incompleto: Aplicando descuento del 50%");
-                precioFinal = servicio.getPrecio() * 0.50;
+                precioFinal = servicio.getPrecio() * 0.30;
             }
         }
 
@@ -76,7 +73,7 @@ public class SuscripcionBasica implements Suscripcion {
 
 
     public void agregarServicio(Servicio servicio, TipoDescuento tipo) throws Exception {
-        serviciosDisponibles.add(new ServicioSuscripcion(servicio, tipo));
+        serviciosDisponibles.add(new ServicioSuscripcion(servicio, tipo, TipoSuscripcion.BASICA));
     }
 
     //Generalizado
