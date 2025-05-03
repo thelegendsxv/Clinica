@@ -10,7 +10,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.clinica.controladores.PanelControlador">
+<BorderPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="co.edu.uniquindio.clinica.controladores.PanelControlador">
 
     <top>
         <HBox alignment="CENTER_LEFT" spacing="10.0" style="-fx-padding: 15; -fx-background-color: #fae5d3;">
@@ -33,6 +34,7 @@
             <Button onAction="#mostrarListarPacientes" style="-fx-background-color: #d5dbdb;" text="Listar pacientes" />
             <Button onAction="#mostrarCrearCita" style="-fx-background-color: #d5dbdb;" text="Crear cita" />
             <Button onAction="#mostrarListarCitas" style="-fx-background-color: #d5dbdb;" text="Listar citas" />
+            <Button onAction="#mostrarListarServicios" style="-fx-background-color: #d5dbdb;" text="Listar servicios" />
         </VBox>
     </left>
 

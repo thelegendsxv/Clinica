@@ -40,6 +40,11 @@ public class PanelControlador {
         cargarVista("/co/edu/uniquindio/clinica/listarCita.fxml");
     }
 
+    @FXML
+    public void mostrarListarServicios() {
+        cargarVista("/co/edu/uniquindio/clinica/listar_servicios.fxml");
+    }
+
     private void cargarVista(String ruta) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(ruta));

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="TOP_CENTER" spacing="20" style="-fx-background-color: #aab7b8;"
+      xmlns="http://javafx.com/javafx/23.0.1"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="co.edu.uniquindio.clinica.controladores.ListarServiciosControlador">
+
+    <HBox alignment="TOP_CENTER" spacing="40">
+        <Label text="Lista Servicios" textFill="#0f0f0f">
+            <font>
+                <Font size="20.0" />
+            </font>
+        </Label>
+    </HBox>
+
+    <TableView fx:id="tbServicios" style="-fx-background-color: #fae5d3;" VBox.vgrow="ALWAYS"
+               columnResizePolicy="CONSTRAINED_RESIZE_POLICY">
+        <columns>
+            <TableColumn fx:id="clNombre" prefWidth="150.0" text="Nombre" />
+            <TableColumn fx:id="clPrecio" prefWidth="100.0" text="Precio" />
+        </columns>
+    </TableView>
+</VBox>
