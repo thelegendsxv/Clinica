@@ -1,10 +1,9 @@
 package co.edu.uniquindio.clinica.controladores;
 
-import co.edu.uniquindio.clinica.factory.Suscripcion;
-import co.edu.uniquindio.clinica.factory.SuscripcionBasicaFactory;
-import co.edu.uniquindio.clinica.factory.SuscripcionFactory;
-import co.edu.uniquindio.clinica.factory.SuscripcionPremiumFactory;
-import co.edu.uniquindio.clinica.modelo.entidades.*;
+import co.edu.uniquindio.clinica.suscripcion.Suscripcion;
+import co.edu.uniquindio.clinica.suscripcionfactory.SuscripcionBasicaFactory;
+import co.edu.uniquindio.clinica.suscripcionfactory.SuscripcionFactory;
+import co.edu.uniquindio.clinica.suscripcionfactory.SuscripcionPremiumFactory;
 import co.edu.uniquindio.clinica.servicios.ClinicaServicio;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

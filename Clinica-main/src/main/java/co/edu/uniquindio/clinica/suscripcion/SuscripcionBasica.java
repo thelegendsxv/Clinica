@@ -1,8 +1,7 @@
-package co.edu.uniquindio.clinica.factory;
+package co.edu.uniquindio.clinica.suscripcion;
 
 import co.edu.uniquindio.clinica.modelo.entidades.Factura;
 import co.edu.uniquindio.clinica.modelo.entidades.Servicio;
-import co.edu.uniquindio.clinica.modelo.entidades.ServicioSuscripcion;
 import co.edu.uniquindio.clinica.modelo.enumer.TipoDescuento;
 import lombok.Getter;
 import lombok.Setter;

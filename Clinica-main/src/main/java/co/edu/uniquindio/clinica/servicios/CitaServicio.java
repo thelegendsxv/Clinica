@@ -1,7 +1,5 @@
 package co.edu.uniquindio.clinica.servicios;
 
-import co.edu.uniquindio.clinica.factory.Suscripcion;
-import co.edu.uniquindio.clinica.mailer.EnvioEmail;
 import co.edu.uniquindio.clinica.modelo.entidades.Cita;
 import co.edu.uniquindio.clinica.modelo.entidades.Factura;
 import co.edu.uniquindio.clinica.modelo.entidades.Paciente;
@@ -23,16 +21,17 @@ public class CitaServicio {
         citaRepositorio = new CitaRepositorio();
     }
 
-    public Cita agendarCita(Paciente paciente, Servicio servicio, LocalDateTime fecha, Factura factura) throws Exception {
-        validarDatosCita(paciente, servicio, fecha, factura);
-        Cita cita = crearCita(paciente, servicio, fecha, factura);
+    public Cita agendarCita(Paciente paciente, Servicio servicio, LocalDateTime fecha, Factura factura, String nota) throws Exception {
+        validarDatosCita(paciente, servicio, fecha, factura, nota);
+        verificarDisponibilidadCita(paciente.getId(), fecha, servicio);
+        Cita cita = crearCita(paciente, servicio, fecha, factura, nota);
 
         citaRepositorio.agregarCita(cita);
 
         return cita;
     }
 
-    public Cita crearCita(Paciente paciente, Servicio servicio, LocalDateTime fecha, Factura factura) throws Exception {
+    public Cita crearCita(Paciente paciente, Servicio servicio, LocalDateTime fecha, Factura factura, String nota) throws Exception {
         String id = generarNumeroUnicoCita();
         Cita cita = Cita.builder()
                 .id(id)
@@ -41,10 +40,11 @@ public class CitaServicio {
                 .fecha(fecha)
                 .estado(EstadoCita.AGENDADA)
                 .factura(factura)
+                .notas(nota)
                 .build();
         return  cita;
     }
-    public void validarDatosCita(Paciente paciente, Servicio servicio, LocalDateTime fecha, Factura factura) throws Exception {
+    public void validarDatosCita(Paciente paciente, Servicio servicio, LocalDateTime fecha, Factura factura, String nota) throws Exception {
         if (paciente == null) {
             throw new IllegalArgumentException("Paciente no puede ser nulo.");
         }
@@ -56,6 +56,9 @@ public class CitaServicio {
         }
         if (factura == null) {
             throw new IllegalArgumentException("La factura no puede ser nulo.");
+        }
+        if (nota == null) {
+            throw new IllegalArgumentException("La nota no puede ser nulo.");
         }
     }
 
@@ -73,6 +76,7 @@ public class CitaServicio {
         while (citaRepositorio.buscarCitaPorId(numero) != null) {
             numero = generarNumeroAleatorio();
         }
+        System.out.println("Numero de cita generado: " + numero);
         return numero;
     }
 
@@ -83,5 +87,16 @@ public class CitaServicio {
             numero.append(random.nextInt(7));
         }
         return numero.toString();
+    }
+    public void verificarDisponibilidadCita(String id, LocalDateTime fechaHora, Servicio servicio) throws Exception {
+        for (Cita citaExistente : citaRepositorio.getCitas()) {
+            if (citaExistente.getPaciente().getId().equals(id) && citaExistente.getFecha().equals(fechaHora)) {
+                throw new Exception("El paciente ya tiene cita a esta hora");
+            }
+            if (citaExistente.getServicio().equals(servicio) && citaExistente.getFecha().equals(fechaHora)) {
+                throw new Exception("El servicio ya está reservado a esta hora");
+
+            }
+        }
     }
 }

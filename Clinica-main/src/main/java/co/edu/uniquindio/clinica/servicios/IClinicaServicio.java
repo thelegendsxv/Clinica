@@ -1,7 +1,6 @@
 package co.edu.uniquindio.clinica.servicios;
 
-import co.edu.uniquindio.clinica.factory.Suscripcion;
-import co.edu.uniquindio.clinica.modelo.entidades.Cita;
+import co.edu.uniquindio.clinica.suscripcion.Suscripcion;
 import co.edu.uniquindio.clinica.modelo.entidades.Paciente;
 import co.edu.uniquindio.clinica.modelo.entidades.Servicio;
 
@@ -12,7 +11,7 @@ public interface IClinicaServicio {
 
     void registrarServicio(String nombre, double precio) throws Exception;
 
-    void agendarCita(Paciente paciente, Servicio servicio, LocalDateTime fecha) throws Exception;
+    void agendarCita(Paciente paciente, Servicio servicio, LocalDateTime fecha, String nota) throws Exception;
 
     void cancelarCita(String idCita) throws Exception;
 

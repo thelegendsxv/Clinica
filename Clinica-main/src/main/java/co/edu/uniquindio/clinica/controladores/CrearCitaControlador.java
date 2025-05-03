@@ -30,7 +30,6 @@ public class CrearCitaControlador {
         SeleccionePaciente.getItems().addAll(clinica.getPacienteServicio().getPacienteRepositorio().getPacientes());
         SeleccioneServicio.getItems().addAll(clinica.getServicios());
 
-        // Horas disponibles de 8:00 a 17:00 cada 30 minutos
         for (int hour = 8; hour <= 17; hour++) {
             SeleccioneHora.getItems().add(String.format("%02d:00", hour));
             SeleccioneHora.getItems().add(String.format("%02d:30", hour));
@@ -55,28 +54,11 @@ public class CrearCitaControlador {
             LocalTime hora = LocalTime.parse(horaTexto);
             LocalDateTime fechaHora = LocalDateTime.of(fecha, hora);
 
-            // Verificar disponibilidad
-            for (Cita citaExistente : clinica.getCitaServicio().getCitaRepositorio().getCitas()) {
-                if (citaExistente.getPaciente().equals(paciente) && citaExistente.getFecha().equals(fechaHora)) {
-                    mostrarAlerta("El paciente ya tiene cita a esta hora");
-                    return;
-                }
-                if (citaExistente.getServicio().equals(servicio) && citaExistente.getFecha().equals(fechaHora)) {
-                    mostrarAlerta("El servicio ya está reservado a esta hora");
-                    return;
-                }
-            }
 
-            // Crear y guardar cita
-            Cita nuevaCita = Cita.builder()
-                    .paciente(paciente)
-                    .servicio(servicio)
-                    .fecha(fechaHora)
-                    .estado(EstadoCita.AGENDADA)
-                    .notas(notas)
-                    .build();
 
-            clinica.getCitaServicio().getCitaRepositorio().agregarCita(nuevaCita);
+
+
+            clinica.agendarCita(paciente, servicio, fechaHora, notas);
             mostrarAlerta("Cita creada exitosamente");
             limpiarCampos();
 

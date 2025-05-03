@@ -1,6 +1,6 @@
 package co.edu.uniquindio.clinica.servicios;
 
-import co.edu.uniquindio.clinica.factory.Suscripcion;
+import co.edu.uniquindio.clinica.suscripcion.Suscripcion;
 import co.edu.uniquindio.clinica.modelo.entidades.Paciente;
 import co.edu.uniquindio.clinica.repositorios.PacienteRepositorio;
 import lombok.Getter;

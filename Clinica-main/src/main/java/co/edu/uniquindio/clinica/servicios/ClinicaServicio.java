@@ -1,9 +1,8 @@
 package co.edu.uniquindio.clinica.servicios;
 
-import co.edu.uniquindio.clinica.factory.Suscripcion;
+import co.edu.uniquindio.clinica.suscripcion.Suscripcion;
 import co.edu.uniquindio.clinica.mailer.EnvioEmail;
 import co.edu.uniquindio.clinica.modelo.entidades.*;
-import co.edu.uniquindio.clinica.modelo.enumer.EstadoCita;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -35,9 +34,9 @@ public class ClinicaServicio implements IClinicaServicio {
 
 
     @Override
-    public void agendarCita(Paciente paciente, Servicio servicio, LocalDateTime fecha) throws Exception {
+    public void agendarCita(Paciente paciente, Servicio servicio, LocalDateTime fecha, String nota) throws Exception {
         Factura factura = paciente.getSuscripcion().generarFacturaCobro(servicio, paciente.getNombre());
-        Cita cita = citaServicio.agendarCita(paciente, servicio, fecha, factura);
+        Cita cita = citaServicio.agendarCita(paciente, servicio, fecha, factura, nota);
         enviarCorreoVerificacion(paciente, cita);
     }
 

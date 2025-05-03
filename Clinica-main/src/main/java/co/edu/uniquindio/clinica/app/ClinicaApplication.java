@@ -1,10 +1,10 @@
 package co.edu.uniquindio.clinica.app;
 
 import co.edu.uniquindio.clinica.controladores.ControladorPrincipal;
-import co.edu.uniquindio.clinica.factory.Suscripcion;
-import co.edu.uniquindio.clinica.factory.SuscripcionBasicaFactory;
-import co.edu.uniquindio.clinica.factory.SuscripcionFactory;
-import co.edu.uniquindio.clinica.factory.SuscripcionPremiumFactory;
+import co.edu.uniquindio.clinica.suscripcion.Suscripcion;
+import co.edu.uniquindio.clinica.suscripcionfactory.SuscripcionBasicaFactory;
+import co.edu.uniquindio.clinica.suscripcionfactory.SuscripcionFactory;
+import co.edu.uniquindio.clinica.suscripcionfactory.SuscripcionPremiumFactory;
 import co.edu.uniquindio.clinica.modelo.entidades.Paciente;
 import co.edu.uniquindio.clinica.modelo.entidades.Servicio;
 import co.edu.uniquindio.clinica.servicios.ClinicaServicio;
@@ -45,12 +45,12 @@ public class ClinicaApplication extends Application {
             Paciente pacienteSanti = controladorPrincipal.getClinica().getPacienteServicio().getPacienteRepositorio().getPacientes().get(0);
             Servicio servicioGeneral = controladorPrincipal.getClinica().getServicios().get(0);
             LocalDateTime fechaCitaSanti = LocalDateTime.now().plusDays(2).withHour(10).withMinute(30);
-            controladorPrincipal.getClinica().agendarCita(pacienteSanti, servicioGeneral, fechaCitaSanti);
+            controladorPrincipal.getClinica().agendarCita(pacienteSanti, servicioGeneral, fechaCitaSanti, "Recurde traer tapabocas");
 
 
             Paciente pacienteDaiana = controladorPrincipal.getClinica().getPacienteServicio().getPacienteRepositorio().getPacientes().get(1);
             LocalDateTime fechaCitaDaiana = LocalDateTime.now().plusDays(3).withHour(9).withMinute(0);
-            controladorPrincipal.getClinica().agendarCita(pacienteDaiana, servicioGeneral, fechaCitaDaiana);
+            controladorPrincipal.getClinica().agendarCita(pacienteDaiana, servicioGeneral, fechaCitaDaiana, "No debe comer en 12 horas");
 
             System.out.println(controladorPrincipal.getClinica().getPacienteServicio().getPacienteRepositorio().getPacientes().get(1));
             System.out.println(controladorPrincipal.getClinica().getServicios());
