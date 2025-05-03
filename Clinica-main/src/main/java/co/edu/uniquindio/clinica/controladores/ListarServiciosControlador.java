@@ -1,11 +1,11 @@
 package co.edu.uniquindio.clinica.controladores;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 
 public class ListarServiciosControlador {
 
@@ -20,20 +20,19 @@ public class ListarServiciosControlador {
 
     @FXML
     public void initialize() {
-        // Configurar las columnas
         clNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         clPrecio.setCellValueFactory(new PropertyValueFactory<>("precio"));
 
-        // Simular datos
         ObservableList<Servicio> servicios = FXCollections.observableArrayList(
-                new Servicio("Consulta general", 50000),
-                new Servicio("Odontología", 80000)
+                new Servicio("Consulta General", 50000),
+                new Servicio("Odontología", 80000),
+                new Servicio("Pediatría", 60000)
         );
 
         tbServicios.setItems(servicios);
     }
 
-    // Clase interna para ejemplo (idealmente va en su propio archivo)
+    // Clase interna para ejemplo
     public static class Servicio {
         private final String nombre;
         private final double precio;

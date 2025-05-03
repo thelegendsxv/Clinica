@@ -42,7 +42,7 @@ public class PanelControlador {
 
     @FXML
     public void mostrarListarServicios() {
-        cargarVista("/co/edu/uniquindio/clinica/listar_servicios.fxml");
+        cargarVista("/co/edu/uniquindio/clinica/listarServicios.fxml");
     }
 
     private void cargarVista(String ruta) {
