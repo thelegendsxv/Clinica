@@ -1,6 +1,8 @@
 package co.edu.uniquindio.clinica.controladores;
 
+import co.edu.uniquindio.clinica.modelo.enumer.TipoSuscripcion;
 import co.edu.uniquindio.clinica.suscripcion.Suscripcion;
+import co.edu.uniquindio.clinica.suscripcionfactory.SinSuscripcionFactory;
 import co.edu.uniquindio.clinica.suscripcionfactory.SuscripcionBasicaFactory;
 import co.edu.uniquindio.clinica.suscripcionfactory.SuscripcionFactory;
 import co.edu.uniquindio.clinica.suscripcionfactory.SuscripcionPremiumFactory;
@@ -42,15 +44,11 @@ public class CrearPacienteControlador {
             String nombre = nombreTextField.getText();
             String telefono = telefonoTextField.getText();
             String correo = correoTextField.getText();
-            String tipo = tipoSuscripcion.getValue();
-            validarCampos(id, nombre, telefono, correo, tipo);
+            TipoSuscripcion tipo = TipoSuscripcion.valueOf(tipoSuscripcion.getValue());
+            validarCampos(id, nombre, telefono, correo, String.valueOf(tipo));
 
-            SuscripcionFactory suscripcionFactory = tipo.equals("Básica") ?
-                    new SuscripcionBasicaFactory() : new SuscripcionPremiumFactory();
 
-            Suscripcion suscripcion = suscripcionFactory.crearSuscripcion();
-
-            clinica.registrarPaciente(id, nombre, telefono, correo, suscripcion);
+            clinica.registrarPaciente(id, nombre, telefono, correo, tipo);
 
             if (listaPacientesControlador != null) {
                 listaPacientesControlador.actualizarTabla(); // <- Corrección clave
@@ -101,6 +99,6 @@ public class CrearPacienteControlador {
 
     @FXML
     void initialize() {
-        tipoSuscripcion.getItems().addAll("Básica", "Premium");
+        tipoSuscripcion.getItems().addAll("BASICA", "PREMIUM", "SINSUSCRIPCION");
     }
 }

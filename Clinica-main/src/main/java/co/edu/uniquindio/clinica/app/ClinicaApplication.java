@@ -1,6 +1,7 @@
 package co.edu.uniquindio.clinica.app;
 
 import co.edu.uniquindio.clinica.controladores.ControladorPrincipal;
+import co.edu.uniquindio.clinica.modelo.enumer.TipoSuscripcion;
 import co.edu.uniquindio.clinica.suscripcion.Suscripcion;
 import co.edu.uniquindio.clinica.suscripcionfactory.SuscripcionBasicaFactory;
 import co.edu.uniquindio.clinica.suscripcionfactory.SuscripcionFactory;
@@ -27,14 +28,8 @@ public class ClinicaApplication extends Application {
             controladorPrincipal.inicializarConClinica(clinica);
 
 
-            SuscripcionFactory suscripcionFactory = new SuscripcionBasicaFactory();
-            SuscripcionFactory suscripcionFactory2 = new SuscripcionPremiumFactory();
-            Suscripcion suscripcionPremium = suscripcionFactory2.crearSuscripcion();
-            Suscripcion suscripcionBasica = suscripcionFactory.crearSuscripcion();
-
-
-            controladorPrincipal.getClinica().registrarPaciente("123", "Santiago Torres", "3216549870", "santiago.rodriguezt@uqvirtual.edu.co", suscripcionPremium);
-            controladorPrincipal.getClinica().registrarPaciente("124", "Daiana Ramirez", "911694991", "santiago.rodriguezt@uqvirtual.edu.co", suscripcionBasica);
+            controladorPrincipal.getClinica().registrarPaciente("123", "Santiago Torres", "3216549870", "santiago.rodriguezt@uqvirtual.edu.co", TipoSuscripcion.BASICA);
+            controladorPrincipal.getClinica().registrarPaciente("124", "Daiana Ramirez", "911694991", "santiago.rodriguezt@uqvirtual.edu.co", TipoSuscripcion.PREMIUM);
 
 
             controladorPrincipal.getClinica().registrarServicio("Consulta General", 80000);

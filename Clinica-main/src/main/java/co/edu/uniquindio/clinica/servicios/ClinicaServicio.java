@@ -1,8 +1,13 @@
 package co.edu.uniquindio.clinica.servicios;
 
+import co.edu.uniquindio.clinica.modelo.enumer.TipoSuscripcion;
 import co.edu.uniquindio.clinica.suscripcion.Suscripcion;
 import co.edu.uniquindio.clinica.mailer.EnvioEmail;
 import co.edu.uniquindio.clinica.modelo.entidades.*;
+import co.edu.uniquindio.clinica.suscripcionfactory.SinSuscripcionFactory;
+import co.edu.uniquindio.clinica.suscripcionfactory.SuscripcionBasicaFactory;
+import co.edu.uniquindio.clinica.suscripcionfactory.SuscripcionFactory;
+import co.edu.uniquindio.clinica.suscripcionfactory.SuscripcionPremiumFactory;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -27,7 +32,9 @@ public class ClinicaServicio implements IClinicaServicio {
     private final List<Servicio> servicios = new LinkedList<>();
 
 
-    public void registrarPaciente(String id, String nombre, String telefono, String correo, Suscripcion suscripcion) throws Exception {
+    public void registrarPaciente(String id, String nombre, String telefono, String correo, TipoSuscripcion tipo) throws Exception {
+        crearSuscripcionFactory(tipo);
+        Suscripcion suscripcion = crearSuscripcionFactory(tipo).crearSuscripcion();
         pacienteServicio.registrarPaciente(id, nombre, telefono, correo, suscripcion);
 
     }
@@ -89,5 +96,14 @@ public class ClinicaServicio implements IClinicaServicio {
                 "Gracias por confiar en nosotros.\nClínica Salud";
 
         EnvioEmail.enviarNotificacion(paciente.getCorreo(), asunto, mensaje);
+    }
+    public SuscripcionFactory crearSuscripcionFactory(TipoSuscripcion tipo) {
+
+        return switch (tipo) {
+            case TipoSuscripcion.BASICA -> new SuscripcionBasicaFactory();
+            case TipoSuscripcion.PREMIUM -> new SuscripcionPremiumFactory();
+            case TipoSuscripcion.SINSUSCRIPCION -> new SinSuscripcionFactory();
+            default -> throw new IllegalArgumentException("Tipo de suscripción no válido");
+        };
     }
 }
