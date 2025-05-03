@@ -1,11 +1,16 @@
 package co.edu.uniquindio.clinica.controladores;
 
+import co.edu.uniquindio.clinica.modelo.entidades.Servicio;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+
+import java.text.NumberFormat;
+import java.util.Locale;
 
 public class ListarServiciosControlador {
 
@@ -16,38 +21,27 @@ public class ListarServiciosControlador {
     private TableColumn<Servicio, String> clNombre;
 
     @FXML
-    private TableColumn<Servicio, Double> clPrecio;
+    private TableColumn<Servicio, String> clPrecio;
 
     @FXML
     public void initialize() {
-        clNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
-        clPrecio.setCellValueFactory(new PropertyValueFactory<>("precio"));
-
-        ObservableList<Servicio> servicios = FXCollections.observableArrayList(
-                new Servicio("Consulta General", 50000),
-                new Servicio("Odontología", 80000),
-                new Servicio("Pediatría", 60000)
-        );
-
-        tbServicios.setItems(servicios);
+        configurarColumnas();
+        cargarDatos();
     }
 
-    // Clase interna para ejemplo
-    public static class Servicio {
-        private final String nombre;
-        private final double precio;
+    private void configurarColumnas() {
+        clNombre.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getNombre()));
 
-        public Servicio(String nombre, double precio) {
-            this.nombre = nombre;
-            this.precio = precio;
-        }
+        // Formatear el precio como moneda
+        clPrecio.setCellValueFactory(c -> {
+            NumberFormat formatoMoneda = NumberFormat.getCurrencyInstance(new Locale("es", "CO"));
+            return new SimpleStringProperty(formatoMoneda.format(c.getValue().getPrecio()));
+        });
+    }
 
-        public String getNombre() {
-            return nombre;
-        }
-
-        public double getPrecio() {
-            return precio;
-        }
+    private void cargarDatos() {
+        tbServicios.setItems(FXCollections.observableArrayList(
+                ControladorPrincipal.getInstancia().getClinica().getServicios()
+        ));
     }
 }
